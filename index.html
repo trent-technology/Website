@@ -183,5 +183,21 @@
     <footer>
         <p>&copy; 2025 Trent Technology. All rights reserved. | Contact: <a href="mailto:tb@trent.technology">tb@trent.technology</a></p>
     </footer>
+
+      <script>
+        function copyEmail() {
+            const email = 'tb@trent.technology'; // Replace with your actual email
+            navigator.clipboard.writeText(email).then(() => {
+                const copiedText = document.getElementById('copiedText');
+                copiedText.classList.add('show');
+                setTimeout(() => {
+                    copiedText.classList.remove('show');
+                }, 2000); // Hide after 2 seconds
+            }).catch(err => {
+                console.error('Failed to copy email: ', err);
+                // Fallback: still allow mailto link to work
+            });
+        }
+    </script>
 </body>
 </html>
