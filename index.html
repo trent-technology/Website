@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Website for Trent Technology">
-    <!-- Optional CSP: Adjust based on your hosting needs -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+    <!-- CSP: Allows scripts from 'self' (same origin), no inline or eval -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'; style-src 'self'">
     <title>Trent Technology</title>
     <style>
         /* Reset default styles */
@@ -156,6 +156,11 @@
             font-size: 0.9rem;
         }
 
+        .email-link {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+
         .copied-text {
             opacity: 0;
             transition: opacity 0.3s;
@@ -249,7 +254,7 @@
         <section id="Contact" class="tab-content">
             <h1>Contact Me</h1>
             <p>Fill out the form below to get in touch!</p>
-            <form id="contact-form" action="mailto:noy" method="POST" enctype="text/plain">
+            <form id="contact-form" action="mailto:" method="POST" enctype="text/plain">
                 <label for="name">Name:</label><br>
                 <input type="text" id="name" name="name" required><br>
                 <label for="email">Email:</label><br>
@@ -262,7 +267,7 @@
     </main>
 
     <footer>
-        <p>© 2025 Trent Technology. All rights reserved. | Contact: <a href="mailto:noy" class="email-link" onclick="copyEmail()">noy<span class="copied-text" id="copiedText">Copied!</span></a></p>
+        <p>© 2025 Trent Technology. All rights reserved. | Contact: <a href="mailto:" class="email-link" id="email-link"><span class="copied-text" id="copiedText">Copied!</span></a></p>
     </footer>
 
     <script>
@@ -271,58 +276,4 @@
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 console.log('Tab clicked:', link.getAttribute('data-tab')); // Debug
-                // Remove active class from all links and sections
-                document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                // Add active class to clicked link and corresponding section
-                const tabId = link.getAttribute('data-tab');
-                link.classList.add('active');
-                const targetSection = document.getElementById(tabId);
-                if (targetSection) {
-                    targetSection.classList.add('active');
-                } else {
-                    console.error('Section not found for tabId:', tabId);
-                }
-                // Update URL
-                window.history.pushState(null, '', `#${tabId}`);
-            });
-        });
-
-        // On page load, show section based on URL hash
-        window.addEventListener('load', () => {
-            console.log('Page loaded, checking hash'); // Debug
-            const hash = window.location.hash.substring(1);
-            if (hash) {
-                const targetSection = document.getElementById(hash);
-                if (targetSection) {
-                    document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                    targetSection.classList.add('active');
-                    const activeLink = document.querySelector(`.tab-link[data-tab="${hash}"]`);
-                    if (activeLink) {
-                        activeLink.classList.add('active');
-                    } else {
-                        console.error('Link not found for hash:', hash);
-                    }
-                } else {
-                    console.error('Section not found for hash:', hash);
-                }
-            }
-        });
-
-        // Email copy function
-        function copyEmail() {
-            const email = 'noy';
-            navigator.clipboard.writeText(email).then(() => {
-                const copiedText = document.getElementById('copiedText');
-                copiedText.classList.add('show');
-                setTimeout(() => {
-                    copiedText.classList.remove('show');
-                }, 2000); // CSP-compliant
-            }).catch(err => {
-                console.error('Failed to copy email: ', err);
-            });
-        }
-    </script>
-</body>
-</html>
+                // Remove active class from all
