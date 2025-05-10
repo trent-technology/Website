@@ -41,23 +41,3 @@ window.addEventListener('load', () => {
         }
     }
 });
-
-// Email copy function
-function copyEmail() {
-    const email = 'no';
-    navigator.clipboard.writeText(email).then(() => {
-        const copiedText = document.getElementById('copiedText');
-        copiedText.classList.add('show');
-        setTimeout(() => {
-            copiedText.classList.remove('show');
-        }, 2000); // CSP-compliant
-    }).catch(err => {
-        console.error('Failed to copy email: ', err);
-    });
-}
-
-// Attach email copy event listener
-document.getElementById('email-link').addEventListener('click', (e) => {
-    e.preventDefault(); // Prevent mailto action for copying
-    copyEmail();
-});
