@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Website for Trent Technology">
+    <!-- Optional CSP: Adjust based on your hosting needs -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
     <title>Trent Technology</title>
     <style>
         /* Reset default styles */
@@ -33,29 +35,6 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         }
 
-        nav a {
-            color: #e0e0e0;
-            text-decoration: none;
-            margin: 0 1rem;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #4a90e2;
-        }
-        
-
-        /* Tab content */
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Tab links */
         .tab-link {
             color: #e0e0e0;
             text-decoration: none;
@@ -73,10 +52,19 @@
             border-bottom: 2px solid #4a90e2;
         }
 
+        /* Main content */
         main {
             max-width: 800px;
             margin: 2rem auto;
             padding: 0 1rem;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         section {
@@ -110,6 +98,52 @@
             margin-bottom: 0.5rem;
         }
 
+        .subsection {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Form styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        label {
+            margin-bottom: 0.5rem;
+            color: #e0e0e0;
+        }
+
+        input, textarea {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: #2c2c2c;
+            border: 1px solid #4a90e2;
+            color: #e0e0e0;
+            border-radius: 4px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: #ffffff;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -122,9 +156,20 @@
             font-size: 0.9rem;
         }
 
+        .copied-text {
+            opacity: 0;
+            transition: opacity 0.3s;
+            margin-left: 0.5rem;
+            color: #4a90e2;
+        }
+
+        .copied-text.show {
+            opacity: 1;
+        }
+
         /* Responsive design */
         @media (max-width: 600px) {
-            nav a {
+            .tab-link {
                 display: block;
                 margin: 0.5rem 0;
             }
@@ -136,81 +181,136 @@
             h2 {
                 font-size: 1.5rem;
             }
+
+            form {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
-    <script>
-    document.querySelectorAll('.tab-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent default anchor behavior
-
-            // Remove active class from all links and sections
-            document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-
-            // Add active class to clicked link and corresponding section
-            const tabId = link.getAttribute('data-tab');
-            link.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-
-            // Update URL without scrolling
-            window.history.pushState(null, '', `#${tabId}`);
-        });
-    });
-
-    // On page load, show section based on URL hash
-    window.addEventListener('load', () => {
-        const hash = window.location.hash.substring(1); // Remove #
-        if (hash) {
-            const targetSection = document.getElementById(hash);
-            if (targetSection) {
-                document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
-                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-                targetSection.classList.add('active');
-                document.querySelector(`.tab-link[data-tab="${hash}"]`).classList.add('active');
-            }
-        }
-    });
-</script>
 <body>
-<header>
-    <nav>
-        <a href="#Resume" class="tab-link active" data-tab="Resume">Resume</a>
-        <a href="#section2" class="tab-link" data-tab="section2">Section 2</a>
-        <a href="#Contact" class="tab-link" data-tab="Contact">Contact</a>
-    </nav>
-</header>
+    <header>
+        <nav>
+            <a href="#Resume" class="tab-link active" data-tab="Resume">Resume</a>
+            <a href="#section2" class="tab-link" data-tab="section2">Section 2</a>
+            <a href="#Contact" class="tab-link" data-tab="Contact">Contact</a>
+        </nav>
+    </header>
 
-<main>
-    <section id="Resume" class="tab-content active">
-        <h1>Professional Experience</h1>
-        <!-- Your existing subsections -->
-    </section>
+    <main>
+        <!-- Resume Section -->
+        <section id="Resume" class="tab-content active">
+            <h1>Professional Experience</h1>
+            <div class="subsection">
+                <h3>Subsection 1: YOUR_SUBSECTION_1_TITLE</h3>
+                <ul>
+                    <li>YOUR_BULLET_POINT_1</li>
+                    <li>YOUR_BULLET_POINT_2</li>
+                    <li>YOUR_BULLET_POINT_3</li>
+                </ul>
+            </div>
+            <div class="subsection">
+                <h3>Subsection 2: YOUR_SUBSECTION_2_TITLE</h3>
+                <ul>
+                    <li>YOUR_BULLET_POINT</li>
+                </ul>
+            </div>
+            <div class="subsection">
+                <h3>Subsection 3: YOUR_SUBSECTION_3_TITLE</h3>
+                <ul>
+                    <li>YOUR_BULLET_POINT_1</li>
+                    <li>YOUR_BULLET_POINT_2</li>
+                </ul>
+            </div>
+            <div class="subsection">
+                <h3>Subsection 4: YOUR_SUBSECTION_4_TITLE</h3>
+                <ul>
+                    <li>YOUR_BULLET_POINT_1</li>
+                </ul>
+            </div>
+            <div class="subsection">
+                <h3>Subsection 5: YOUR_SUBSECTION_5_TITLE</h3>
+                <ul>
+                    <li>YOUR_BULLET_POINT_1</li>
+                    <li>YOUR_BULLET_POINT_2</li>
+                    <li>YOUR_BULLET_POINT_3</li>
+                    <li>YOUR_BULLET_POINT_4</li>
+                </ul>
+            </div>
+        </section>
 
-    <section id="section2" class="tab-content">
-        <h1>Section 2: YOUR_SECTION_2_TITLE</h1>
-        <p>YOUR_SECTION_2_CONTENT</p>
-    </section>
+        <!-- Section 2 -->
+        <section id="section2" class="tab-content">
+            <h1>Section 2: YOUR_SECTION_2_TITLE</h1>
+            <p>YOUR_SECTION_2_CONTENT</p>
+        </section>
 
-    <section id="Contact" class="tab-content">
-        <h1>Contact Me</h1>
-        <p>Fill out the form below to get in touch!</p>
-        <form id="contact-form" action="/send-email" method="POST">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name" required><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br>
-            <label for="message">Message:</label><br>
-            <textarea id="message" name="message" rows="5" required></textarea><br>
-            <button type="submit">Send Message</button>
-        </form>
-    </section>
-</main>
+        <!-- Contact Section -->
+        <section id="Contact" class="tab-content">
+            <h1>Contact Me</h1>
+            <p>Fill out the form below to get in touch!</p>
+            <form id="contact-form" action="mailto:noy" method="POST" enctype="text/plain">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="5" required></textarea><br>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Trent Technology. All rights reserved. | Contact: <a href="mailto:" class="email-link" onclick="copyEmail()">no<span class="copied-text" id="copiedText"></span></a></p>
+        <p>© 2025 Trent Technology. All rights reserved. | Contact: <a href="mailto:noy" class="email-link" onclick="copyEmail()">noy<span class="copied-text" id="copiedText">Copied!</span></a></p>
+    </footer>
 
-      <script>
+    <script>
+        // Tab switching logic
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('Tab clicked:', link.getAttribute('data-tab')); // Debug
+                // Remove active class from all links and sections
+                document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                // Add active class to clicked link and corresponding section
+                const tabId = link.getAttribute('data-tab');
+                link.classList.add('active');
+                const targetSection = document.getElementById(tabId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                } else {
+                    console.error('Section not found for tabId:', tabId);
+                }
+                // Update URL
+                window.history.pushState(null, '', `#${tabId}`);
+            });
+        });
+
+        // On page load, show section based on URL hash
+        window.addEventListener('load', () => {
+            console.log('Page loaded, checking hash'); // Debug
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const targetSection = document.getElementById(hash);
+                if (targetSection) {
+                    document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    targetSection.classList.add('active');
+                    const activeLink = document.querySelector(`.tab-link[data-tab="${hash}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    } else {
+                        console.error('Link not found for hash:', hash);
+                    }
+                } else {
+                    console.error('Section not found for hash:', hash);
+                }
+            }
+        });
+
+        // Email copy function
         function copyEmail() {
             const email = 'noy';
             navigator.clipboard.writeText(email).then(() => {
@@ -218,11 +318,11 @@
                 copiedText.classList.add('show');
                 setTimeout(() => {
                     copiedText.classList.remove('show');
-                }, 2000); // Use a function, not a string
+                }, 2000); // CSP-compliant
             }).catch(err => {
                 console.error('Failed to copy email: ', err);
             });
-}
+        }
     </script>
 </body>
 </html>
