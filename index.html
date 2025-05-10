@@ -117,7 +117,7 @@
         <nav>
             <a href="#Resume">Resume</a>
             <a href="#section2">Section 2</a>
-            <a href="#section3">Section 3</a>
+            <a href="#Contact">Contact</a>
         </nav>
     </header>
 
@@ -170,14 +170,20 @@
 
         <!-- Section 2 (bare) -->
         <section id="section2">
-            <h1>Section 2: YOUR_SECTION_2_TITLE</h1>
-            <p>YOUR_SECTION_2_CONTENT</p>
-        </section>
+            <h1>Contact Me</h1>
+            <p>Fill out the form below to get in touch!</p>
+            <form id="contact-form" action="/send-email" method="POST">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required><br>
 
-        <!-- Section 3 (bare) -->
-        <section id="section3">
-            <h1>Section 3: YOUR_SECTION_3_TITLE</h1>
-            <p>YOUR_SECTION_3_CONTENT</p>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="5" required></textarea><br>
+
+                <button type="submit">Send Message</button>
+            </form>
         </section>
     </main>
 
