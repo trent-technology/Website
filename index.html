@@ -44,8 +44,35 @@
         nav a:hover {
             color: #4a90e2;
         }
+        
 
-        /* Main content */
+        /* Tab content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Tab links */
+        .tab-link {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .tab-link:hover {
+            color: #4a90e2;
+        }
+
+        .tab-link.active {
+            color: #4a90e2;
+            border-bottom: 2px solid #4a90e2;
+        }
+
         main {
             max-width: 800px;
             margin: 2rem auto;
@@ -112,66 +139,60 @@
         }
     </style>
 </head>
+    <script>
+    document.querySelectorAll('.tab-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default anchor behavior
+
+            // Remove active class from all links and sections
+            document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            // Add active class to clicked link and corresponding section
+            const tabId = link.getAttribute('data-tab');
+            link.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+
+            // Update URL without scrolling
+            window.history.pushState(null, '', `#${tabId}`);
+        });
+    });
+
+    // On page load, show section based on URL hash
+    window.addEventListener('load', () => {
+        const hash = window.location.hash.substring(1); // Remove #
+        if (hash) {
+            const targetSection = document.getElementById(hash);
+            if (targetSection) {
+                document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                targetSection.classList.add('active');
+                document.querySelector(`.tab-link[data-tab="${hash}"]`).classList.add('active');
+            }
+        }
+    });
+</script>
 <body>
 <header>
     <nav>
-        <a href="#Resume">Resume</a>
-        <a href="#section2">Section 2</a>
-        <a href="#Contact">Contact</a>
+        <a href="#Resume" class="tab-link active" data-tab="Resume">Resume</a>
+        <a href="#section2" class="tab-link" data-tab="section2">Section 2</a>
+        <a href="#Contact" class="tab-link" data-tab="Contact">Contact</a>
     </nav>
 </header>
 
 <main>
-    <section id="Resume">
+    <section id="Resume" class="tab-content active">
         <h1>Professional Experience</h1>
-        <div class="subsection">
-                <h3>Subsection 1: YOUR_SUBSECTION_1_TITLE</h3>
-                <ul>
-                    <li>YOUR_BULLET_POINT_1</li>
-                    <li>YOUR_BULLET_POINT_2</li>
-                    <li>YOUR_BULLET_POINT_3</li>
-                </ul>
-            </div>
-
-            <div class="subsection">
-                <h3>Subsection 2: YOUR_SUBSECTION_2_TITLE</h3>
-                <ul>
-                    <li>YOUR_BULLET_POINT            
-                </ul>
-            </div>
-
-            <div class="subsection">
-                <h3>Subsection 3: YOUR_SUBSECTION_3_TITLE</h3>
-                <ul>
-                    <li>YOUR_BULLET_POINT_1</li>
-                    <li>YOUR_BULLET_POINT_2</li>
-                </ul>
-            </div>
-
-            <div class="subsection">
-                <h3>Subsection 4: YOUR_SUBSECTION_4_TITLE</h3>
-                <ul>
-                    <li>YOUR_BULLET_POINT_1</li>
-                </ul>
-            </div>
-
-            <div class="subsection">
-                <h3>Subsection 5: YOUR_SUBSECTION_5_TITLE</h3>
-                <ul>
-                    <li>YOUR_BULLET_POINT_1</li>
-                    <li>YOUR_BULLET_POINT_2</li>
-                    <li>YOUR_BULLET_POINT_3</li>
-                    <li>YOUR_BULLET_POINT_4</li>
-                </ul>
-            </div>
+        <!-- Your existing subsections -->
     </section>
 
-    <section id="section2">
+    <section id="section2" class="tab-content">
         <h1>Section 2: YOUR_SECTION_2_TITLE</h1>
         <p>YOUR_SECTION_2_CONTENT</p>
     </section>
 
-    <section id="Contact">
+    <section id="Contact" class="tab-content">
         <h1>Contact Me</h1>
         <p>Fill out the form below to get in touch!</p>
         <form id="contact-form" action="/send-email" method="POST">
