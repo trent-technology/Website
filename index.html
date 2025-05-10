@@ -175,14 +175,14 @@
 <body>
 <header>
     <nav>
-        <a href="#Resume" class="tab-link" data-tab="Resume">Resume</a>
+        <a href="#Resume" class="tab-link active" data-tab="Resume">Resume</a>
         <a href="#section2" class="tab-link" data-tab="section2">Section 2</a>
         <a href="#Contact" class="tab-link" data-tab="Contact">Contact</a>
     </nav>
 </header>
 
 <main>
-    <section id="Resume" class="tab-content">
+    <section id="Resume" class="tab-content active">
         <h1>Professional Experience</h1>
         <!-- Your existing subsections -->
     </section>
@@ -212,18 +212,17 @@
 
       <script>
         function copyEmail() {
-            const email = 'noy'; // Replace with your actual email
+            const email = 'tb@trent.technology';
             navigator.clipboard.writeText(email).then(() => {
                 const copiedText = document.getElementById('copiedText');
                 copiedText.classList.add('show');
                 setTimeout(() => {
                     copiedText.classList.remove('show');
-                }, 2000); // Hide after 2 seconds
+                }, 2000); // Use a function, not a string
             }).catch(err => {
                 console.error('Failed to copy email: ', err);
-                // Fallback: still allow mailto link to work
             });
-        }
+}
     </script>
 </body>
 </html>
