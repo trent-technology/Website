@@ -113,20 +113,18 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="#Resume">Resume</a>
-            <a href="#section2">Section 2</a>
-            <a href="#Contact">Contact</a>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <a href="#Resume">Resume</a>
+        <a href="#section2">Section 2</a>
+        <a href="#Contact">Contact</a>
+    </nav>
+</header>
 
-    <main>
-        <!-- Section 1 with 5 subsections -->
-        <section id="Resume">
-            <h1>Professional Experience</h1>
-
-            <div class="subsection">
+<main>
+    <section id="Resume">
+        <h1>Professional Experience</h1>
+        <div class="subsection">
                 <h3>Subsection 1: YOUR_SUBSECTION_1_TITLE</h3>
                 <ul>
                     <li>YOUR_BULLET_POINT_1</li>
@@ -166,32 +164,27 @@
                     <li>YOUR_BULLET_POINT_4</li>
                 </ul>
             </div>
-        </section>
+    </section>
 
-        <!-- Section 2 (bare) -->
-        <section id="section2">
-            <h1>Section 2: YOUR_SECTION_2_TITLE</h1>
-            <p>YOUR_SECTION_2_CONTENT</p>
-        </section>
+    <section id="section2">
+        <h1>Section 2: YOUR_SECTION_2_TITLE</h1>
+        <p>YOUR_SECTION_2_CONTENT</p>
+    </section>
 
-         <!-- Contact Section -->
-         <section id="Contact">
-            <h1>Contact Me</h1>
-            <p>Fill out the form below to get in touch!</p>
-            <form id="contact-form" action="/send-email" method="POST">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br>
-
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" required><br>
-
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" rows="5" required></textarea><br>
-
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-    </main>
+    <section id="Contact">
+        <h1>Contact Me</h1>
+        <p>Fill out the form below to get in touch!</p>
+        <form id="contact-form" action="/send-email" method="POST">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="5" required></textarea><br>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+</main>
 
     <footer>
         <p>&copy; 2025 Trent Technology. All rights reserved. | Contact: <a href="mailto:" class="email-link" onclick="copyEmail()">no<span class="copied-text" id="copiedText"></span></a></p>
