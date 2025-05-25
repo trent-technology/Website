@@ -49,11 +49,6 @@ main {
     padding: 0 1rem;
 }
 
-/* Center the Contact section */
-#Contact {
-    margin: 2rem auto; /* Center the Contact section */
-}
-
 .tab-content {
     display: none;
 }
