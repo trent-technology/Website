@@ -49,11 +49,6 @@ main {
     padding: 0 1rem;
 }
 
-/* Center the Contact section (redundant since main is now centered, but kept for clarity) */
-#Contact {
-    margin: 2rem auto;
-}
-
 .tab-content {
     display: none;
 }
