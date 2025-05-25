@@ -107,7 +107,7 @@ section {
     width: 300px; /* Increased from 200px by 50% */
     height: 300px; /* Increased from 200px by 50% */
     object-fit: cover; /* Maintains uniform scaling */
-    border: 1px solid #4a90e2; /* Unchanged, as request only affects text boxes */
+    border: 1px solid #000000; /* Changed from #4a90e2 to black */
 }
 
 /* Responsive design for Compsci Club */
