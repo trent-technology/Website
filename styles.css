@@ -45,8 +45,13 @@ header {
 /* Main content */
 main {
     max-width: 800px;
-    margin: 2rem 0 2rem 20px; /* Aligned left with 20px margin for border room */
+    margin: 2rem auto; /* Centered with auto margins */
     padding: 0 1rem;
+}
+
+/* Center the Contact section (redundant since main is now centered, but kept for clarity) */
+#Contact {
+    margin: 2rem auto;
 }
 
 .tab-content {
