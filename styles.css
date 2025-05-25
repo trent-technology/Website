@@ -84,30 +84,30 @@ section {
     font-weight: bold;
     margin: 0 0 10px 0;
     padding: 10px;
-    background-color: #2c2c2c; /* Matches header/footer background */
-    border: 1px solid #4a90e2; /* Matches theme blue */
-    color: #e0e0e0; /* Matches body text color */
+    background-color: #2c2c2c;
+    border: 1px solid #000000; /* Changed from #4a90e2 to black */
+    color: #e0e0e0;
     text-align: center;
-    width: 200px; /* Fixed width for label */
+    width: 200px; /* Unchanged */
 }
 
 .description {
     font-size: 1em;
     line-height: 1.5;
     padding: 15px;
-    background-color: #2c2c2c; /* Matches header/footer background */
-    border: 1px solid #4a90e2; /* Matches theme blue */
-    color: #e0e0e0; /* Matches body text color */
-    min-height: 100px; /* Ensures uniform height */
-    width: 100%; /* Takes full width of text-content */
+    background-color: #2c2c2c;
+    border: 1px solid #000000; /* Changed from #4a90e2 to black */
+    color: #e0e0e0;
+    min-height: 100px;
+    width: 100%;
     box-sizing: border-box;
 }
 
 .club-item img {
-    width: 200px; /* Fixed width for images */
-    height: 200px; /* Fixed height for images */
-    object-fit: cover; /* Ensures images are uniformly scaled */
-    border: 1px solid #4a90e2; /* Matches theme blue */
+    width: 300px; /* Increased from 200px by 50% */
+    height: 300px; /* Increased from 200px by 50% */
+    object-fit: cover; /* Maintains uniform scaling */
+    border: 1px solid #4a90e2; /* Unchanged, as request only affects text boxes */
 }
 
 /* Responsive design for Compsci Club */
