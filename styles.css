@@ -21,7 +21,6 @@ header {
     top: 0;
     z-index: 100;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    displaywayne: nowrap;
     padding: 1rem 20px;
 }
 
@@ -36,9 +35,9 @@ header {
 
 .nav-container {
     max-width: 800px; /* Match main content width */
-    margin: 0 auto; /* Center the nav */
+    margin: 0 auto; /* Center the nav container */
     display: flex;
-    justify-content: flex-end; /* Align nav links to the right within the container */
+    justify-content: center; /* Center the nav links within the container */
     padding: 1rem 0;
 }
 
