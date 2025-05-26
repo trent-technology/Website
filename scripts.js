@@ -42,11 +42,16 @@ if (window.location.pathname.includes('index.html') || window.location.pathname 
 // On page load, show section based on URL hash (only on index.html)
 if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
     window.addEventListener('load', () => {
-        console.log('Page loaded, checking hash'); // Debug
-        const hash = window.location.hash.substring(1);
+        console.log('Page loaded, checking hash:', window.location.hash); // Debug
+        const hash = window.location.hash.substring(1); // Get hash without '#'
         const validTabs = ['Resume', 'CompSci Club', 'Contact'];
+        // Use hash if valid, otherwise default to 'Resume'
         const tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
         activateTab(tabId);
+        // Ensure the hash is set in the URL
+        if (!window.location.hash) {
+            window.history.replaceState(null, '', `#${tabId}`);
+        }
         // Scroll to top on initial load
         setTimeout(() => {
             window.scrollTo({
@@ -64,6 +69,10 @@ if (window.location.pathname.includes('index.html') || window.location.pathname 
         const validTabs = ['Resume', 'CompSci Club', 'Contact'];
         const tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
         activateTab(tabId);
+        // Ensure the hash is updated in the URL
+        if (window.location.hash !== `#${tabId}`) {
+            window.history.replaceState(null, '', `#${tabId}`);
+        }
     });
 }
 
@@ -72,12 +81,10 @@ const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault(); // Prevent default form submission
-
         const form = e.target;
         const formData = new FormData(form);
         const submitButton = form.querySelector('button[type="submit"]');
         submitButton.disabled = true; // Disable button during submission
-
         try {
             const response = await fetch(form.action, {
                 method: form.method,
@@ -86,7 +93,6 @@ if (contactForm) {
                     'Accept': 'application/json'
                 }
             });
-
             if (response.ok) {
                 // Show success message
                 const successMessage = document.createElement('p');
