@@ -9,11 +9,13 @@ function activateTab(tabId) {
     const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
     if (targetSection) {
         targetSection.classList.add('active');
+        console.log('Applied active class to section:', tabId); // Debug
     } else {
         console.warn('Section not found for tabId:', tabId);
     }
     if (activeLink) {
         activeLink.classList.add('active');
+        console.log('Applied active class to link:', tabId); // Debug
     } else {
         console.warn('Link not found for tabId:', tabId);
     }
@@ -30,15 +32,20 @@ function activateTab(tabId) {
 // Function to initialize tab based on localStorage, hash, or default
 function initializeTab() {
     console.log('Initializing tab, current hash:', window.location.hash); // Debug
-    const validTabs = ['Resume', 'AboutMe', 'CompSci Club', 'Contact']; // Updated to include AboutMe
+    const validTabs = ['AboutMe', 'Resume', 'CompSciClub', 'Contact']; // Updated IDs
     
     // Check localStorage for the last selected tab
     let tabId = localStorage.getItem('activeTab');
+    console.log('Retrieved from localStorage:', tabId); // Debug
     
     // If no valid tab in localStorage, fall back to URL hash
     if (!tabId || !validTabs.includes(tabId)) {
         const hash = window.location.hash.substring(1); // Get hash without '#'
-        tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
+        console.log('Raw hash:', hash); // Debug
+        // Match hash case-insensitively
+        const normalizedHash = validTabs.find(tab => tab.toLowerCase() === hash.toLowerCase());
+        tabId = normalizedHash || 'AboutMe'; // Default to AboutMe
+        console.log('Normalized tabId:', tabId); // Debug
     }
     
     activateTab(tabId);
@@ -61,23 +68,28 @@ function initializeTab() {
 }
 
 // Tab switching logic for clicks (only on index.html)
-if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
+if (window.location.pathname.includes('index.html') || window.location.pathname === '/' || window.location.pathname === '') {
     document.querySelectorAll('.tab-link').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const tabId = link.getAttribute('data-tab');
+            console.log('Tab clicked:', tabId); // Debug
             activateTab(tabId);
             window.history.pushState(null, '', `#${tabId}`);
             // Save the selected tab to localStorage
             localStorage.setItem('activeTab', tabId);
-            console.log('Tab clicked, set hash and saved to localStorage:', `#${tabId}`); // Debug
+            console.log('Set hash and saved to localStorage:', `#${tabId}`); // Debug
         });
     });
 
     // Run tab initialization as soon as DOM is ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeTab);
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM loaded, initializing tab'); // Debug
+            initializeTab();
+        });
     } else {
+        console.log('DOM already loaded, initializing tab'); // Debug
         initializeTab();
     }
 
@@ -85,8 +97,11 @@ if (window.location.pathname.includes('index.html') || window.location.pathname 
     window.addEventListener('hashchange', () => {
         console.log('Hash changed:', window.location.hash); // Debug
         const hash = window.location.hash.substring(1);
-        const validTabs = ['Resume', 'AboutMe', 'CompSci Club', 'Contact']; // Updated to include AboutMe
-        const tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
+        const validTabs = ['AboutMe', 'Resume', 'CompSciClub', 'Contact']; // Updated IDs
+        // Match hash case-insensitively
+        const normalizedHash = validTabs.find(tab => tab.toLowerCase() === hash.toLowerCase());
+        const tabId = normalizedHash || 'AboutMe'; // Default to AboutMe
+        console.log('Normalized tabId on hashchange:', tabId); // Debug
         activateTab(tabId);
         // Save the selected tab to localStorage
         localStorage.setItem('activeTab', tabId);
@@ -109,7 +124,7 @@ if (contactForm) {
         const submitButton = form.querySelector('button[type="submit"]');
         submitButton.disabled = true; // Disable button during submission
         try {
-            const response consta response = await fetch(form.action, {
+            const response = await fetch(form.action, {
                 method: form.method,
                 body: formData,
                 headers: {
