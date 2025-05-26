@@ -17,6 +17,14 @@ function activateTab(tabId) {
     } else {
         console.warn('Link not found for tabId:', tabId);
     }
+    // Scroll to top after activating tab
+    setTimeout(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'instant'
+        });
+    }, 0);
 }
 
 // Tab switching logic for clicks (only on index.html)
@@ -39,6 +47,14 @@ if (window.location.pathname.includes('index.html') || window.location.pathname 
         const validTabs = ['Resume', 'CompSci Club', 'Contact'];
         const tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
         activateTab(tabId);
+        // Scroll to top on initial load
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'instant'
+            });
+        }, 0);
     });
 
     // Handle hash changes (e.g., browser back/forward)
@@ -101,8 +117,15 @@ if (contactForm) {
             submitButton.disabled = false; // Re-enable button
         }
     });
-// Scroll to top on page load
-window.addEventListener('load', () => {
-  window.scrollTo(0, 0);
-});
 }
+
+// Scroll to top on page load for all pages
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'instant'
+        });
+    }, 0);
+});
