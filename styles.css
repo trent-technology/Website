@@ -89,19 +89,19 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* Space between items */
-    justify-content: space-between; /* Evenly space items */
+    justify-content: space-between; /* Evenly space two items per row */
 }
 
 .club-item {
     flex: 0 0 calc(50% - 10px); /* Two items per row, accounting for 20px gap */
     display: flex;
-    flex-direction: column; /* Stack text-content and image container vertically */
+    flex-direction: column; /* Stack text-content and image-container vertically */
     margin-bottom: 20px;
 }
 
 .text-content {
     display: flex;
-    flex-direction: column; /* Stack label and description vertically */
+    flex-direction: column; /* Stack label and text-image-container vertically */
     width: 100%; /* Full width of club-item */
 }
 
@@ -117,6 +117,12 @@ section {
     width: 100%; /* Full width of text-content */
 }
 
+.text-image-container {
+    display: flex;
+    align-items: flex-start; /* Align description and image at the top */
+    gap: 20px; /* Space between description and image */
+}
+
 .description {
     font-size: 1em;
     line-height: 1.5;
@@ -125,8 +131,8 @@ section {
     border: 1px solid #000000;
     color: #e0e0e0;
     min-height: 100px;
+    flex: 1; /* Takes available space */
     box-sizing: border-box;
-    flex: 1; /* Takes available space in text-image container */
 }
 
 .club-item img {
@@ -134,17 +140,6 @@ section {
     height: 300px;
     object-fit: cover;
     border: 1px solid #000000;
-}
-
-/* Container for description and image to sit side by side */
-.club-item .text-image-container {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px; /* Space between description and image */
-}
-
-.club-item .text-image-container .description {
-    width: calc(100% - 320px); /* Account for image width (300px) + gap (20px) */
 }
 
 /* Responsive design for Compsci Club */
@@ -155,24 +150,19 @@ section {
     }
 
     .text-image-container {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Stack description and image vertically */
         width: 100%;
     }
 
-    .club-item .text-image-container .description {
+    .description {
         width: 100%; /* Full width on mobile */
+        order: 2; /* Description below image */
     }
 
     .club-item img {
+        order: 1; /* Image first on mobile */
         width: 100%; /* Full width on mobile */
         max-width: 300px; /* Maintain max size */
-        order: 1; /* Image first on mobile */
-    }
-
-    .text-content {
-        order: 2; /* Text below image on mobile */
-        width: 100%;
     }
 
     .image-label {
