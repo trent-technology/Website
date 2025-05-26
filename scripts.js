@@ -41,3 +41,46 @@ window.addEventListener('load', () => {
         }
     }
 });
+
+// Handle contact form submission
+document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent default form submission
+
+    const form = e.target;
+    const formData = new FormData(form);
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.disabled = true; // Disable button during submission
+
+    try {
+        const response = await fetch(form.action, {
+            method: form.method,
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            // Show success message
+            const successMessage = document.createElement('p');
+            successMessage.textContent = 'Thank you! Your message has been sent.';
+            successMessage.style.color = '#4a90e2';
+            form.appendChild(successMessage);
+            form.reset(); // Clear form
+            // Remove success message after 5 seconds
+            setTimeout(() => successMessage.remove(), 5000);
+        } else {
+            throw new Error('Form submission failed');
+        }
+    } catch (error) {
+        // Show error message
+        const errorMessage = document.createElement('p');
+        errorMessage.textContent = 'Sorry, something went wrong. Please try again later.';
+        errorMessage.style.color = '#e74c3c';
+        form.appendChild(errorMessage);
+        // Remove error message after 5 seconds
+        setTimeout(() => errorMessage.remove(), 5000);
+    } finally {
+        submitButton.disabled = false; // Re-enable button
+    }
+});
