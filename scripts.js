@@ -63,16 +63,22 @@ document.getElementById('contact-form').addEventListener('submit', async (e) => 
         if (response.ok) {
             // Show success message
             const successMessage = document.createElement('p');
-            successMessage.textContent = 'Thank you! Your message has been sent.';
+            successMessage.textContent = 'Thank you! Your message has been sent. Redirecting...';
             successMessage.style.color = '#4a90e2';
             form.appendChild(successMessage);
             form.reset(); // Clear form
-            // Remove success message after 5 seconds
-            setTimeout(() => successMessage.remove(), 5000);
+            // Redirect to thank-you page after 2 seconds
+            setTimeout(() => {
+                console.log('Redirecting to thank-you.html'); // Debug
+                window.location.href = '/thank-you.html'; // Use relative path
+            }, 2000);
         } else {
+            const errorData = await response.json();
+            console.error('Form submission failed:', errorData); // Debug
             throw new Error('Form submission failed');
         }
     } catch (error) {
+        console.error('Error during form submission:', error); // Debug
         // Show error message
         const errorMessage = document.createElement('p');
         errorMessage.textContent = 'Sorry, something went wrong. Please try again later.';
