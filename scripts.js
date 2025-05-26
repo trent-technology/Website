@@ -37,15 +37,15 @@ function initializeTab() {
     // Ensure the hash is set in the URL
     if (window.location.hash !== `#${tabId}`) {
         window.history.replaceState(null, '', `#${tabId}`);
+        console.log('Updated URL hash to:', `#${tabId}`); // Debug
     }
-    // Scroll to top
+    // Fallback: Re-run activation after a delay to handle browser hash behavior
     setTimeout(() => {
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'instant'
-        });
-    }, 0);
+        if (document.querySelector('.tab-content.active')?.id !== tabId) {
+            console.log('Re-activating tab due to mismatch:', tabId); // Debug
+            activateTab(tabId);
+        }
+    }, 100);
 }
 
 // Tab switching logic for clicks (only on index.html)
@@ -56,6 +56,7 @@ if (window.location.pathname.includes('index.html') || window.location.pathname 
             const tabId = link.getAttribute('data-tab');
             activateTab(tabId);
             window.history.pushState(null, '', `#${tabId}`);
+            console.log('Tab clicked, set hash:', `#${tabId}`); // Debug
         });
     });
 
@@ -76,6 +77,7 @@ if (window.location.pathname.includes('index.html') || window.location.pathname 
         // Ensure the hash is updated in the URL
         if (window.location.hash !== `#${tabId}`) {
             window.history.replaceState(null, '', `#${tabId}`);
+            console.log('Updated URL hash on hashchange to:', `#${tabId}`); // Debug
         }
     });
 }
