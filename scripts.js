@@ -2,8 +2,13 @@
 function activateTab(tabId) {
     console.log('Activating tab:', tabId); // Debug
     // Remove active class from all links and sections
-    document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.tab-link').forEach(link => {
+        link.classList.remove('active');
+    });
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+        console.log('Removed active class from section:', content.id); // Debug
+    });
     // Add active class to the target link and section
     const targetSection = document.getElementById(tabId);
     const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
@@ -32,7 +37,7 @@ function activateTab(tabId) {
 // Function to initialize tab based on localStorage, hash, or default
 function initializeTab() {
     console.log('Initializing tab, current hash:', window.location.hash); // Debug
-    const validTabs = ['AboutMe', 'Resume', 'CompSciClub', 'Contact']; // Updated IDs
+    const validTabs = ['AboutMe', 'Resume', 'CompSciClub', 'Contact'];
     
     // Check localStorage for the last selected tab
     let tabId = localStorage.getItem('activeTab');
@@ -60,7 +65,8 @@ function initializeTab() {
     
     // Fallback: Re-run activation after a delay to handle browser hash behavior
     setTimeout(() => {
-        if (document.querySelector('.tab-content.active')?.id !== tabId) {
+        const activeSection = document.querySelector('.tab-content.active');
+        if (!activeSection || activeSection.id !== tabId) {
             console.log('Re-activating tab due to mismatch:', tabId); // Debug
             activateTab(tabId);
         }
@@ -97,10 +103,10 @@ if (window.location.pathname.includes('index.html') || window.location.pathname 
     window.addEventListener('hashchange', () => {
         console.log('Hash changed:', window.location.hash); // Debug
         const hash = window.location.hash.substring(1);
-        const validTabs = ['AboutMe', 'Resume', 'CompSciClub', 'Contact']; // Updated IDs
+        const validTabs = ['AboutMe', 'Resume', 'CompSciClub', 'Contact'];
         // Match hash case-insensitively
         const normalizedHash = validTabs.find(tab => tab.toLowerCase() === hash.toLowerCase());
-        const tabId = normalizedHash || 'AboutMe'; // Default to AboutMe
+        const tabId = normalizedHash || 'AboutMe';
         console.log('Normalized tabId on hashchange:', tabId); // Debug
         activateTab(tabId);
         // Save the selected tab to localStorage
