@@ -24,15 +24,6 @@ header {
     padding: 1rem 20px;
 }
 
-.header-logo {
-    height: 50px;
-    width: auto;
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
-}
-
 .nav-container {
     max-width: 800px;
     margin: 0 auto;
@@ -70,18 +61,18 @@ main {
 }
 
 .tab-content {
-    display: none !important; /* High specificity to hide inactive tabs */
+    display: none !important;
 }
 
 .tab-content.active {
-    display: block !important; /* Ensure active tab is visible */
+    display: block !important;
 }
 
 section {
     margin-bottom: 3rem;
 }
 
-/* Computer Science Club section (only when active) */
+/* Computer Science Club section */
 #CompSciClub.active {
     max-width: 800px;
     margin: 0 auto;
@@ -93,16 +84,15 @@ section {
 }
 
 .club-item {
-    flex: 0 0 calc(50% - 10px);
+    flex: 0 0 100%; /* Full width for each row */
     display: flex;
     flex-direction: column;
-    min-width: 350px;
 }
 
 .text-image-container {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 20px;
     width: 100%;
 }
 
@@ -111,6 +101,12 @@ section {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    min-width: 0; /* Prevent overflow */
+}
+
+.image-container.placeholder {
+    flex: 1;
+    visibility: hidden; /* Hide placeholder */
 }
 
 .image-label {
@@ -162,14 +158,14 @@ section {
         width: 100%;
     }
 
-    .club-item img {
-        max-width: 262.5px;
-        height: 262.5px;
+    .image-container.placeholder {
+        display: none; /* Hide placeholder on mobile */
     }
 
-    .image-label,
-    .description {
-        width: 100%;
+    .club-item img {
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
 }
 
@@ -282,11 +278,6 @@ footer p {
 
 /* Responsive design */
 @media (max-width: 600px) {
-    .header-logo {
-        height: 40px;
-        left: 10px;
-    }
-
     .nav-container {
         max-width: 100%;
         padding: 0.5rem 10px;
