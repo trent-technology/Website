@@ -27,6 +27,27 @@ function activateTab(tabId) {
     }, 0);
 }
 
+// Function to initialize tab based on hash
+function initializeTab() {
+    console.log('Initializing tab, current hash:', window.location.hash); // Debug
+    const hash = window.location.hash.substring(1); // Get hash without '#'
+    const validTabs = ['Resume', 'CompSci Club', 'Contact'];
+    const tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
+    activateTab(tabId);
+    // Ensure the hash is set in the URL
+    if (window.location.hash !== `#${tabId}`) {
+        window.history.replaceState(null, '', `#${tabId}`);
+    }
+    // Scroll to top
+    setTimeout(() => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'instant'
+        });
+    }, 0);
+}
+
 // Tab switching logic for clicks (only on index.html)
 if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
     document.querySelectorAll('.tab-link').forEach(link => {
@@ -37,30 +58,13 @@ if (window.location.pathname.includes('index.html') || window.location.pathname 
             window.history.pushState(null, '', `#${tabId}`);
         });
     });
-}
 
-// On page load, show section based on URL hash (only on index.html)
-if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
-    window.addEventListener('load', () => {
-        console.log('Page loaded, checking hash:', window.location.hash); // Debug
-        const hash = window.location.hash.substring(1); // Get hash without '#'
-        const validTabs = ['Resume', 'CompSci Club', 'Contact'];
-        // Use hash if valid, otherwise default to 'Resume'
-        const tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
-        activateTab(tabId);
-        // Ensure the hash is set in the URL
-        if (!window.location.hash) {
-            window.history.replaceState(null, '', `#${tabId}`);
-        }
-        // Scroll to top on initial load
-        setTimeout(() => {
-            window.scrollTo({
-                top: 0,
-                left: 0,
-                behavior: 'instant'
-            });
-        }, 0);
-    });
+    // Run tab initialization as soon as DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeTab);
+    } else {
+        initializeTab();
+    }
 
     // Handle hash changes (e.g., browser back/forward)
     window.addEventListener('hashchange', () => {
