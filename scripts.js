@@ -30,7 +30,7 @@ function activateTab(tabId) {
 // Function to initialize tab based on localStorage, hash, or default
 function initializeTab() {
     console.log('Initializing tab, current hash:', window.location.hash); // Debug
-    const validTabs = ['Resume', 'About Me', 'CompSci Club', 'Contact']; // Updated to include AboutMe
+    const validTabs = ['Resume', 'AboutMe', 'CompSci Club', 'Contact']; // Updated to include AboutMe
     
     // Check localStorage for the last selected tab
     let tabId = localStorage.getItem('activeTab');
@@ -85,7 +85,7 @@ if (window.location.pathname.includes('index.html') || window.location.pathname 
     window.addEventListener('hashchange', () => {
         console.log('Hash changed:', window.location.hash); // Debug
         const hash = window.location.hash.substring(1);
-        const validTabs = ['Resume', 'About Me', 'CompSci Club', 'Contact']; // Updated to include AboutMe
+        const validTabs = ['Resume', 'AboutMe', 'CompSci Club', 'Contact']; // Updated to include AboutMe
         const tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
         activateTab(tabId);
         // Save the selected tab to localStorage
