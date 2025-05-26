@@ -96,7 +96,7 @@ section {
     flex: 0 0 calc(50% - 10px); /* Two items per row, accounting for 20px gap */
     display: flex;
     flex-direction: column;
-    min-width: 300px; /* Prevent items from shrinking too much */
+    min-width: 350px; /* Increased to accommodate larger images */
 }
 
 .text-image-container {
@@ -140,8 +140,8 @@ section {
 
 .club-item img {
     width: 100%; /* Full width of image-container */
-    max-width: 150px; /* Constrain image size */
-    height: 150px;
+    max-width: 262.5px; /* 150px * 1.75 for 75% larger */
+    height: 262.5px; /* 150px * 1.75 for 75% larger */
     object-fit: cover;
     border: 1px solid #000000;
     align-self: center; /* Center image within container */
@@ -163,8 +163,8 @@ section {
     }
 
     .club-item img {
-        max-width: 150px; /* Maintain image size */
-        height: 150px;
+        max-width: 262.5px; /* Maintain 75% larger size */
+        height: 262.5px;
     }
 
     .image-label,
