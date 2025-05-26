@@ -119,19 +119,20 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="Contact" class="tab-content">
-            <h1>Contact Me</h1>
-            <p>Fill out the form below to get in touch!</p>
-            <form id="contact-form">
-                <label for="name">Name:</label><br>
-                <input type="text" id="name" name="name" required><br>
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" required><br>
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" rows="5" required></textarea><br>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
+    <section id="Contact" class="tab-content">
+    <h1>Contact Me</h1>
+    <p>Fill out the form below to get in touch!</p>
+    <form id="contact-form" action="https://formspree.io/f/xblovawk" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="5" required></textarea><br>
+        <input type="hidden" name="_subject" value="New Contact Form Submission">
+        <button type="submit">Send Message</button>
+    </form>
+</section>
     </main>
 
     <footer>
