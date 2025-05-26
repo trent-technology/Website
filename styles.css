@@ -89,20 +89,18 @@ section {
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* Space between items */
-    justify-content: space-between; /* Evenly space two items per row */
+    justify-content: space-between; /* Evenly space items */
 }
 
 .club-item {
     flex: 0 0 calc(50% - 10px); /* Two items per row, accounting for 20px gap */
     display: flex;
-    flex-direction: column; /* Stack text-content and image-container vertically */
-    margin-bottom: 20px;
+    flex-direction: column;
+    min-width: 300px; /* Prevent items from shrinking too much */
 }
 
 .text-content {
-    display: flex;
-    flex-direction: column; /* Stack label and text-image-container vertically */
-    width: 100%; /* Full width of club-item */
+    width: 100%;
 }
 
 .image-label {
@@ -114,13 +112,13 @@ section {
     border: 1px solid #000000;
     color: #e0e0e0;
     text-align: center;
-    width: 100%; /* Full width of text-content */
+    width: 100%;
 }
 
 .text-image-container {
     display: flex;
-    align-items: flex-start; /* Align description and image at the top */
-    gap: 20px; /* Space between description and image */
+    align-items: flex-start;
+    gap: 20px;
 }
 
 .description {
@@ -131,45 +129,44 @@ section {
     border: 1px solid #000000;
     color: #e0e0e0;
     min-height: 100px;
-    flex: 1; /* Takes available space */
+    flex: 1;
     box-sizing: border-box;
 }
 
 .club-item img {
-    width: 300px; /* Fixed width as per original */
+    width: 300px;
     height: 300px;
     object-fit: cover;
     border: 1px solid #000000;
 }
 
 /* Responsive design for Compsci Club */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .club-item {
-        flex: 0 0 100%; /* One item per row on mobile */
+        flex: 0 0 100%; /* One item per row on smaller screens */
         align-items: center;
     }
 
     .text-image-container {
-        flex-direction: column; /* Stack description and image vertically */
+        flex-direction: column;
         width: 100%;
     }
 
     .description {
-        width: 100%; /* Full width on mobile */
-        order: 2; /* Description below image */
+        width: 100%;
+        order: 2;
     }
 
     .club-item img {
-        order: 1; /* Image first on mobile */
-        width: 100%; /* Full width on mobile */
-        max-width: 300px; /* Maintain max size */
+        order: 1;
+        width: 100%;
+        max-width: 300px;
     }
 
     .image-label {
-        width: 100%; /* Full width on mobile */
+        width: 100%;
     }
 }
-
 h1, h2, h3 {
     color: #ffffff;
     margin-bottom: 1rem;
