@@ -1,22 +1,34 @@
-// Tab switching logic
+// Function to activate a tab based on ID
+function activateTab(tabId) {
+    console.log('Activating tab:', tabId); // Debug
+    // Remove active class from all links and sections
+    document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    // Add active class to the target link and section
+    const targetSection = document.getElementById(tabId);
+    const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
+    if (targetSection) {
+        targetSection.classList.add('active');
+    } else {
+        console.error('Section not found for tabId:', tabId);
+    }
+    if (activeLink) {
+        activeLink.classList.add('active');
+    } else {
+        console.error('Link not found for tabId:', tabId);
+    }
+}
+
+// Tab switching logic for clicks
 document.querySelectorAll('.tab-link').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log('Tab clicked:', link.getAttribute('data-tab')); // Debug
-        // Remove active class from all links and sections
-        document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        // Add active class to clicked link and corresponding section
         const tabId = link.getAttribute('data-tab');
-        link.classList.add('active');
-        const targetSection = document.getElementById(tabId);
-        if (targetSection) {
-            targetSection.classList.add('active');
-        } else {
-            console.error('Section not found for tabId:', tabId);
+        activateTab(tabId);
+        // Update URL without reloading (only for same-page navigation)
+        if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
+            window.history.pushState(null, '', `#${tabId}`);
         }
-        // Update URL
-        window.history.pushState(null, '', `#${tabId}`);
     });
 });
 
@@ -24,26 +36,23 @@ document.querySelectorAll('.tab-link').forEach(link => {
 window.addEventListener('load', () => {
     console.log('Page loaded, checking hash'); // Debug
     const hash = window.location.hash.substring(1);
-    if (hash) {
-        const targetSection = document.getElementById(hash);
-        if (targetSection) {
-            document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            targetSection.classList.add('active');
-            const activeLink = document.querySelector(`.tab-link[data-tab="${hash}"]`);
-            if (activeLink) {
-                activeLink.classList.add('active');
-            } else {
-                console.error('Link not found for hash:', hash);
-            }
-        } else {
-            console.error('Section not found for hash:', hash);
-        }
-    }
+    // Default to 'Resume' if no hash or invalid hash
+    const validTabs = ['Resume', 'CompSci Club', 'Contact'];
+    const tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
+    activateTab(tabId);
+});
+
+// Handle hash changes (e.g., browser back/forward)
+window.addEventListener('hashchange', () => {
+    console.log('Hash changed:', window.location.hash); // Debug
+    const hash = window.location.hash.substring(1);
+    const validTabs = ['Resume', 'CompSci Club', 'Contact'];
+    const tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
+    activateTab(tabId);
 });
 
 // Handle contact form submission
-document.getElementById('contact-form').addEventListener('submit', async (e) => {
+document.getElementById('contact-form')?.addEventListener('submit', async (e) => {
     e.preventDefault(); // Prevent default form submission
 
     const form = e.target;
