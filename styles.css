@@ -25,25 +25,25 @@ header {
 }
 
 .header-logo {
-    height: 50px; /* Adjust as needed */
-    width: auto; /* Maintains aspect ratio */
-    position: absolute; /* Position logo at far left */
-    top: 50%; /* Center vertically */
-    left: 20px; /* Distance from left edge */
-    transform: translateY(-50%); /* Adjust for vertical centering */
+    height: 50px;
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
 }
 
 .nav-container {
-    max-width: 800px; /* Match main content width */
-    margin: 0 auto; /* Center the nav container */
+    max-width: 800px;
+    margin: 0 auto;
     display: flex;
-    justify-content: center; /* Center the nav links within the container */
+    justify-content: center;
     padding: 1rem 0;
 }
 
 nav {
     display: flex;
-    gap: 20px; /* Space between navigation links */
+    gap: 20px;
 }
 
 .tab-link {
@@ -65,7 +65,7 @@ nav {
 /* Main content */
 main {
     max-width: 800px;
-    margin: 2rem auto; /* Centered with auto margins */
+    margin: 2rem auto;
     padding: 0 1rem;
 }
 
@@ -81,47 +81,36 @@ section {
     margin-bottom: 3rem;
 }
 
-/* Specific styling for AboutMe section */
-#AboutMe {
-    color: #e0e0e0; /* Match body text color */
-}
-
-#AboutMe p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-/* Compsci Club section */
-#compsci-club {
+/* Computer Science Club section */
+#CompSciClub {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px; /* Space between club items */
-    justify-content: space-between; /* Evenly space items */
+    gap: 20px;
+    justify-content: space-between;
 }
 
 .club-item {
-    flex: 0 0 calc(50% - 10px); /* Two items per row, accounting for 20px gap */
+    flex: 0 0 calc(50% - 10px);
     display: flex;
     flex-direction: column;
-    min-width: 350px; /* Increased to accommodate larger images */
+    min-width: 350px;
 }
 
 .text-image-container {
     display: flex;
-    flex-direction: row; /* Two image containers side by side */
-    gap: 10px; /* Space between image containers */
+    flex-direction: row;
+    gap: 10px;
     width: 100%;
 }
 
 .image-container {
-    flex: 1; /* Each image container takes equal space */
+    flex: 1;
     display: flex;
-    flex-direction: column; /* Stack label, image, and description vertically */
-    gap: 10px; /* Space between elements within image container */
+    flex-direction: column;
+    gap: 10px;
 }
 
 .image-label {
@@ -150,31 +139,31 @@ section {
 }
 
 .club-item img {
-    width: 100%; /* Full width of image-container */
-    max-width: 262.5px; /* 150px * 1.75 for 75% larger */
-    height: 262.5px; /* 150px * 1.75 for 75% larger */
+    width: 100%;
+    max-width: 262.5px;
+    height: 262.5px;
     object-fit: cover;
     border: 1px solid #000000;
-    align-self: center; /* Center image within container */
+    align-self: center;
 }
 
-/* Responsive design for Compsci Club */
+/* Responsive design for Computer Science Club */
 @media (max-width: 768px) {
     .club-item {
-        flex: 0 0 100%; /* One item per row on smaller screens */
+        flex: 0 0 100%;
     }
 
     .text-image-container {
-        flex-direction: column; /* Stack image containers on smaller screens */
+        flex-direction: column;
         gap: 20px;
     }
 
     .image-container {
-        width: 100%; /* Full width for each image container */
+        width: 100%;
     }
 
     .club-item img {
-        max-width: 262.5px; /* Maintain 75% larger size */
+        max-width: 262.5px;
         height: 262.5px;
     }
 
@@ -183,27 +172,28 @@ section {
         width: 100%;
     }
 }
+
 h1, h2, h3 {
     color: #ffffff;
     margin-bottom: 1rem;
 }
 
 h1 {
-    font-size: 1.875rem; /* Reduced from 2.5rem by ~25% */
-    color: #4a90e2; /* Set to blue */
+    font-size: 1.875rem;
+    color: #4a90e2;
 }
 
 h2 {
-    font-size: 1.35rem; /* Reduced from 1.8rem by ~25% */
+    font-size: 1.35rem;
 }
 
 h3 {
-    font-size: 1.05rem; /* Reduced from 1.4rem by ~25% */
-    font-weight: bold; /* Explicitly bold for clarity */
+    font-size: 1.05rem;
+    font-weight: bold;
 }
 
 h3 .unbold {
-    font-weight: normal; /* Unbold specific parts of h3 */
+    font-weight: normal;
 }
 
 ul {
@@ -293,12 +283,12 @@ footer p {
 /* Responsive design */
 @media (max-width: 600px) {
     .header-logo {
-        height: 40px; /* Smaller logo on mobile */
-        left: 10px; /* Closer to edge on mobile */
+        height: 40px;
+        left: 10px;
     }
 
     .nav-container {
-        max-width: 100%; /* Full width on mobile for alignment */
+        max-width: 100%;
         padding: 0.5rem 10px;
     }
 
@@ -313,12 +303,12 @@ footer p {
     }
 
     h1 {
-        font-size: 1.5rem; /* Reduced from 2rem by ~25% */
-        color: #4a90e2; /* Maintain blue color */
+        font-size: 1.5rem;
+        color: #4a90e2;
     }
 
     h2 {
-        font-size: 1.125rem; /* Reduced from 1.5rem by ~25% */
+        font-size: 1.125rem;
     }
 
     form {
