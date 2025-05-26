@@ -70,19 +70,19 @@ main {
 }
 
 .tab-content {
-    display: none;
+    display: none !important; /* High specificity to hide inactive tabs */
 }
 
 .tab-content.active {
-    display: block;
+    display: block !important; /* Ensure active tab is visible */
 }
 
 section {
     margin-bottom: 3rem;
 }
 
-/* Computer Science Club section */
-#CompSciClub {
+/* Computer Science Club section (only when active) */
+#CompSciClub.active {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
