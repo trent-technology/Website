@@ -101,8 +101,8 @@ if (contactForm) {
             submitButton.disabled = false; // Re-enable button
         }
     });
-}
 // Scroll to top on page load
 window.addEventListener('load', () => {
   window.scrollTo(0, 0);
 });
+}
