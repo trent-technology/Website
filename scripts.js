@@ -27,18 +27,30 @@ function activateTab(tabId) {
     }, 0);
 }
 
-// Function to initialize tab based on hash
+// Function to initialize tab based on localStorage, hash, or default
 function initializeTab() {
     console.log('Initializing tab, current hash:', window.location.hash); // Debug
-    const hash = window.location.hash.substring(1); // Get hash without '#'
     const validTabs = ['Resume', 'CompSci Club', 'Contact'];
-    const tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
+    
+    // Check localStorage for the last selected tab
+    let tabId = localStorage.getItem('activeTab');
+    
+    // If no valid tab in localStorage, fall back to URL hash
+    if (!tabId || !validTabs.includes(tabId)) {
+        const hash = window.location.hash.substring(1); // Get hash without '#'
+        tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
+    }
+    
     activateTab(tabId);
     // Ensure the hash is set in the URL
     if (window.location.hash !== `#${tabId}`) {
         window.history.replaceState(null, '', `#${tabId}`);
         console.log('Updated URL hash to:', `#${tabId}`); // Debug
     }
+    // Save the selected tab to localStorage
+    localStorage.setItem('activeTab', tabId);
+    console.log('Saved active tab to localStorage:', tabId); // Debug
+    
     // Fallback: Re-run activation after a delay to handle browser hash behavior
     setTimeout(() => {
         if (document.querySelector('.tab-content.active')?.id !== tabId) {
@@ -56,7 +68,9 @@ if (window.location.pathname.includes('index.html') || window.location.pathname 
             const tabId = link.getAttribute('data-tab');
             activateTab(tabId);
             window.history.pushState(null, '', `#${tabId}`);
-            console.log('Tab clicked, set hash:', `#${tabId}`); // Debug
+            // Save the selected tab to localStorage
+            localStorage.setItem('activeTab', tabId);
+            console.log('Tab clicked, set hash and saved to localStorage:', `#${tabId}`); // Debug
         });
     });
 
@@ -74,6 +88,9 @@ if (window.location.pathname.includes('index.html') || window.location.pathname 
         const validTabs = ['Resume', 'CompSci Club', 'Contact'];
         const tabId = hash && validTabs.includes(hash) ? hash : 'Resume';
         activateTab(tabId);
+        // Save the selected tab to localStorage
+        localStorage.setItem('activeTab', tabId);
+        console.log('Saved active tab to localStorage on hashchange:', tabId); // Debug
         // Ensure the hash is updated in the URL
         if (window.location.hash !== `#${tabId}`) {
             window.history.replaceState(null, '', `#${tabId}`);
