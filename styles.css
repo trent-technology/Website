@@ -88,21 +88,7 @@ section {
     justify-content: space-between;
 }
 
-.club-item {
-    flex: 0 0 100%; /* Full width for each row */
-    display: flex;
-    flex-direction: column;
-}
-
-.text-image-container {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    width: 100%;
-}
-
 .image-container {
-    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -145,7 +131,7 @@ section {
     border-radius: 4px;
 }
 
-.club-item img {
+#CompSciClub img {
     width: 100%;
     max-width: 262.5px;
     height: 262.5px;
@@ -156,33 +142,30 @@ section {
     transition: transform 0.3s; /* Hover zoom effect */
 }
 
-.club-item img:hover {
+#CompSciClub img:hover {
     transform: scale(1.05); /* Subtle zoom on hover */
 }
 
 /* Responsive design for Computer Science Club */
 @media (max-width: 768px) {
-    .club-item {
-        flex: 0 0 100%;
-    }
-
-    .text-image-container {
-        flex-direction: column;
-        gap: 20px;
+    #CompSciClub.active {
+        grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
     }
 
     .image-container {
         width: 100%;
     }
 
-    .image-container.placeholder {
-        display: none; /* Hide placeholder on mobile */
-    }
-
-    .club-item img {
+    #CompSciClub img {
         max-width: 100%;
         height: auto;
         aspect-ratio: 1 / 1;
+    }
+}
+
+@media (max-width: 992px) {
+    #CompSciClub.active {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
     }
 }
 
@@ -333,8 +316,28 @@ footer p {
     }
 }
 
-/* Home link for logo */
+/* Logo styles - rounded and smaller like YouTube */
+.header-logo {
+    display: block;
+    margin: 10px auto;
+    max-width: 40px; /* Smaller size, similar to YouTube logo */
+    height: auto;
+    border-radius: 50%; /* Fully rounded (circle) */
+    transition: transform 0.3s, box-shadow 0.3s; /* Hover effects */
+}
+
 .home-link {
-    display: inline-block; /* Makes the link clickable around the image */
-    text-decoration: none; /* Removes underline */
+    text-decoration: none;
+}
+
+.header-logo:hover {
+    transform: scale(1.1); /* Subtle zoom on hover */
+    box-shadow: 0 0 10px rgba(90, 169, 248, 0.8); /* Glow effect with #5aa9f8 accent */
+}
+
+/* Adjust logo on mobile */
+@media (max-width: 768px) {
+    .header-logo {
+        max-width: 32px; /* Slightly smaller on mobile */
+    }
 }
