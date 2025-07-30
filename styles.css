@@ -9,14 +9,14 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #1a1a1a;
-    color: #ffffff;
+    color: #ffffff; /* Changed to pure white for better readability */
     line-height: 1.6;
     padding: 20px;
 }
 
-/* Header */
+/* Header and navigation */
 header {
-    background: linear-gradient(to bottom, #2c2c2c, #1a1a1a);
+    background: linear-gradient(to bottom, #2c2c2c, #1a1a1a); /* Subtle gradient for depth */
     position: sticky;
     top: 0;
     z-index: 100;
@@ -24,25 +24,33 @@ header {
     padding: 1rem 20px;
 }
 
-.header-logo {
-    display: block;
-    margin: 10px auto;
-    max-width: 150px;
-    height: auto;
+.nav-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
 }
 
-.navbar {
-    background-color: transparent;
+nav {
+    display: flex;
+    gap: 20px;
 }
 
-.nav-link.tab-link {
-    color: #ffffff !important;
+.tab-link {
+    color: #ffffff;
+    text-decoration: none;
     font-weight: bold;
     transition: color 0.3s, transform 0.3s;
 }
 
-.nav-link.tab-link:hover, .nav-link.tab-link.active {
-    color: #5aa9f8 !important;
+.tab-link:hover {
+    color: #5aa9f8; /* Brighter blue for hover */
+    transform: translateY(-2px); /* Subtle lift effect */
+}
+
+.tab-link.active {
+    color: #5aa9f8;
     border-bottom: 2px solid #5aa9f8;
 }
 
@@ -53,115 +61,155 @@ main {
     padding: 0 1rem;
 }
 
-.card {
-    background-color: #252525;
-    border: 1px solid #5aa9f8;
-    border-radius: 8px;
-}
-
 .tab-content {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    display: none !important;
+    background-color: #252525; /* Slightly lighter card background for contrast */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Deeper shadow for depth */
 }
 
 .tab-content.active {
-    display: block;
-    opacity: 1;
+    display: block !important;
 }
 
-/* Computer Science Club */
+section {
+    margin-bottom: 3rem;
+}
+
+/* Computer Science Club section */
 #CompSciClub.active {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 events wide */
-    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.club-item {
+    flex: 0 0 100%; /* Full width for each row */
+    display: flex;
+    flex-direction: column;
+}
+
+.text-image-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
 }
 
 .image-container {
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    background-color: #252525;
+    min-width: 0; /* Prevent overflow */
+    background-color: #252525; /* Match card background */
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .image-container.placeholder {
-    display: none;
+    flex: 1;
+    visibility: hidden; /* Hide placeholder */
 }
 
 .image-label {
     font-size: 1.2em;
     font-weight: bold;
+    margin: 0;
     padding: 10px;
     background-color: #2c2c2c;
-    border: 1px solid #5aa9f8;
-    border-radius: 4px;
+    border: 1px solid #5aa9f8; /* Brighter border */
     color: #ffffff;
     text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
 }
 
 .description {
     font-size: 1em;
+    line-height: 1.5;
     padding: 15px;
     background-color: #2c2c2c;
     border: 1px solid #5aa9f8;
-    border-radius: 4px;
-    min-height: 100px;
     color: #ffffff;
+    min-height: 100px;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
 }
 
-#CompSciClub img {
+.club-item img {
     width: 100%;
-    max-width: 250px; /* Slightly smaller for 3-wide layout */
-    height: 250px;
+    max-width: 262.5px;
+    height: 262.5px;
     object-fit: cover;
     border: 1px solid #5aa9f8;
     border-radius: 8px;
-    margin: 0 auto;
-    transition: transform 0.3s;
+    align-self: center;
+    transition: transform 0.3s; /* Hover zoom effect */
 }
 
-#CompSciClub img:hover {
-    transform: scale(1.05);
+.club-item img:hover {
+    transform: scale(1.05); /* Subtle zoom on hover */
 }
 
-/* Responsive design for CompSci Club */
-@media (max-width: 992px) {
-    #CompSciClub.active {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
-    }
-}
-
+/* Responsive design for Computer Science Club */
 @media (max-width: 768px) {
-    #CompSciClub.active {
-        grid-template-columns: 1fr; /* 1 column on mobile */
+    .club-item {
+        flex: 0 0 100%;
     }
-    #CompSciClub img {
+
+    .text-image-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .image-container {
+        width: 100%;
+    }
+
+    .image-container.placeholder {
+        display: none; /* Hide placeholder on mobile */
+    }
+
+    .club-item img {
         max-width: 100%;
         height: auto;
         aspect-ratio: 1 / 1;
     }
 }
 
+h1, h2, h3 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
 h1 {
     font-size: 1.875rem;
-    color: #5aa9f8;
-    margin-bottom: 1rem;
-    grid-column: 1 / -1; /* Ensure h1 spans full grid */
+    color: #5aa9f8; /* Brighter blue for headings */
+}
+
+h2 {
+    font-size: 1.35rem;
+    color: #ffffff;
 }
 
 h3 {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
     font-weight: bold;
     color: #ffffff;
 }
 
-h3 .unbold, .text-muted {
+h3 .unbold {
     font-weight: normal;
-    color: #cccccc;
+    color: #cccccc; /* Lighter gray for subtitles */
 }
 
 ul {
@@ -175,43 +223,67 @@ li {
     margin-bottom: 0.5rem;
 }
 
+.subsection {
+    margin-bottom: 1.5rem;
+}
+
 /* Form styles */
 form {
+    display: flex;
+    flex-direction: column;
     max-width: 500px;
     margin: 0 auto;
 }
 
-.form-control {
-    background-color: #2c2c2c;
-    border: 1px solid #5aa9f8;
+label {
+    margin-bottom: 0.5rem;
     color: #ffffff;
 }
 
-.form-control:focus {
+input, textarea {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
     background-color: #2c2c2c;
-    border-color: #ffffff;
-    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+    border: 1px solid #5aa9f8;
+    color: #ffffff;
+    border-radius: 4px;
+    font-family: 'Arial', sans-serif;
+    transition: border-color 0.3s;
 }
 
-.btn-primary {
+input:focus, textarea:focus {
+    border-color: #ffffff; /* White border on focus for highlight */
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
     background-color: #5aa9f8;
+    color: #1a1a1a; /* Dark text on blue for contrast */
+    padding: 0.75rem;
     border: none;
-    color: #1a1a1a;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
-.btn-primary:hover {
-    background-color: #4a90e2;
-}
-
-#form-status {
-    color: #5aa9f8;
+button:hover {
+    background-color: #4a90e2; /* Darker blue on hover */
 }
 
 /* Footer */
 footer {
-    background-color: #2c2c2c;
-    padding: 1rem;
     text-align: center;
+    padding: 1rem;
+    background-color: #2c2c2c;
+    margin-top: 2rem;
+}
+
+footer p {
+    font-size: 0.9rem;
 }
 
 .email-link {
@@ -219,25 +291,50 @@ footer {
     text-decoration: none;
 }
 
-.email-link:hover {
-    color: #4a90e2;
+.copied-text {
+    opacity: 0;
+    transition: opacity 0.3s;
+    margin-left: 0.5rem;
+    color: #5aa9f8;
 }
 
-/* General responsive design */
-@media (max-width: 768px) {
-    .header-logo {
-        max-width: 120px;
+.copied-text.show {
+    opacity: 1;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .nav-container {
+        max-width: 100%;
+        padding: 0.5rem 10px;
     }
-    .navbar-nav {
-        text-align: center;
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
+
+    .tab-link {
+        margin: 0.5rem 0;
+    }
+
     h1 {
         font-size: 1.5rem;
+        color: #5aa9f8;
     }
-    h3 {
+
+    h2 {
         font-size: 1.125rem;
     }
+
     form {
         max-width: 100%;
     }
+}
+
+/* Home link for logo */
+.home-link {
+    display: inline-block; /* Makes the link clickable around the image */
+    text-decoration: none; /* Removes underline */
 }
