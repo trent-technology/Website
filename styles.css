@@ -83,7 +83,7 @@ section {
     margin: 0 auto;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 3 events wide */
     gap: 20px;
     justify-content: space-between;
 }
@@ -147,9 +147,15 @@ section {
 }
 
 /* Responsive design for Computer Science Club */
+@media (max-width: 992px) {
+    #CompSciClub.active {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+}
+
 @media (max-width: 768px) {
     #CompSciClub.active {
-        grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
+        grid-template-columns: 1fr; /* 1 column on mobile */
     }
 
     .image-container {
@@ -160,12 +166,6 @@ section {
         max-width: 100%;
         height: auto;
         aspect-ratio: 1 / 1;
-    }
-}
-
-@media (max-width: 992px) {
-    #CompSciClub.active {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
     }
 }
 
@@ -316,22 +316,24 @@ footer p {
     }
 }
 
-/* Logo styles - rounded and smaller like YouTube */
+/* Home link for logo */
+.home-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+/* Logo styles - smaller with rounded corners */
 .header-logo {
     display: block;
     margin: 10px auto;
     max-width: 40px; /* Smaller size, similar to YouTube logo */
     height: auto;
-    border-radius: 50%; /* Fully rounded (circle) */
-    transition: transform 0.3s, box-shadow 0.3s; /* Hover effects */
-}
-
-.home-link {
-    text-decoration: none;
+    border-radius: 10px; /* Rounded corners, not fully oval */
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .header-logo:hover {
-    transform: scale(1.1); /* Subtle zoom on hover */
+    transform: scale(1.1);
     box-shadow: 0 0 10px rgba(90, 169, 248, 0.8); /* Glow effect with #5aa9f8 accent */
 }
 
