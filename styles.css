@@ -25,10 +25,9 @@ header {
 }
 
 .header-logo {
-    display: block;
-    margin: 10px auto;
-    max-width: 150px;
+    max-width: 112.5px;
     height: auto;
+    border-radius: 15px;
 }
 
 .navbar {
@@ -144,6 +143,9 @@ main {
         height: auto;
         aspect-ratio: 1 / 1;
     }
+    .header-logo {
+        max-width: 90px;
+    }
 }
 
 h1 {
@@ -225,9 +227,6 @@ footer {
 
 /* General responsive design */
 @media (max-width: 768px) {
-    .header-logo {
-        max-width: 120px;
-    }
     .navbar-nav {
         text-align: center;
     }
