@@ -11,12 +11,12 @@ function activateTab(tabId) {
 
 // Function to initialize tab
 function initializeTab() {
-    const validTabs = ['AboutMe', 'Resume', 'CompSciClub', 'Contact'];
+    const validTabs = ['Home', 'AboutMe', 'Resume', 'CompSciClub', 'Contact'];
     let tabId = localStorage.getItem('activeTab');
     if (!tabId || !validTabs.includes(tabId)) {
         const hash = window.location.hash.substring(1);
         const normalizedHash = validTabs.find(tab => tab.toLowerCase() === hash.toLowerCase());
-        tabId = normalizedHash || 'AboutMe';
+        tabId = normalizedHash || 'Home';
     }
     activateTab(tabId);
     if (window.location.hash !== `#${tabId}`) {
@@ -47,9 +47,9 @@ if (window.location.pathname.endsWith('index.html') || window.location.pathname 
     }
     window.addEventListener('hashchange', () => {
         const hash = window.location.hash.substring(1);
-        const validTabs = ['AboutMe', 'Resume', 'CompSciClub', 'Contact'];
+        const validTabs = ['Home', 'AboutMe', 'Resume', 'CompSciClub', 'Contact'];
         const normalizedHash = validTabs.find(tab => tab.toLowerCase() === hash.toLowerCase());
-        const tabId = normalizedHash || 'AboutMe';
+        const tabId = normalizedHash || 'Home';
         activateTab(tabId);
         localStorage.setItem('activeTab', tabId);
         if (window.location.hash !== `#${tabId}`) {
