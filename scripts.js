@@ -3,7 +3,7 @@ function activateTab(tabId) {
     document.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
     document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
     const targetSection = document.getElementById(tabId);
-    const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
+    const activeLink = document.querySelector(`.navbar-nav .tab-link[data-tab="${tabId}"]`);
     if (targetSection) targetSection.classList.add('active');
     if (activeLink) activeLink.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
