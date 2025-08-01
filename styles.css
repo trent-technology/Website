@@ -47,7 +47,7 @@ header {
 
 /* Main content */
 main {
-    max-width: 90%; /* Changed from fixed 800px to percentage for better scaling on larger screens */
+    max-width: 90%; /* Base for smaller screens */
     margin: 2rem auto;
     padding: 0 1rem;
 }
@@ -168,10 +168,16 @@ main {
 
 @media (min-width: 1200px) {
     main {
-        max-width: 1200px; /* Allow wider content on large desktops for better use of space */
+        max-width: 80%; /* Reduced from 90% to 80% for larger screens to balance gaps without capping at a fixed px */
     }
     #CompSciClub img {
         max-width: 300px; /* Slightly larger images on big screens */
+    }
+}
+
+@media (min-width: 1600px) {
+    main {
+        max-width: 70%; /* Further adjustment for ultra-wide desktops to reduce side gaps by making content wider */
     }
 }
 
