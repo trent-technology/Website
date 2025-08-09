@@ -264,3 +264,36 @@ footer {
         text-align: center;
     }
 }
+
+/* Carousel styles for Home section */
+.carousel-item .row {
+    align-items: center;
+}
+
+.carousel-item img {
+    width: 50%; /* 50% smaller than full column width */
+    border-radius: 15px; /* Rounded corners matching logo */
+    display: block;
+    margin: 0 auto; /* Center the image if smaller */
+}
+
+.carousel-item h3 {
+    color: #5aa9f8;
+}
+
+.carousel-item p {
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .carousel-item .row {
+        flex-direction: column;
+    }
+    .carousel-item .col-md-6 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .carousel-item img {
+        width: 50%; /* Maintain 50% on mobile too */
+    }
+}
