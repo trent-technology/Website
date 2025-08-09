@@ -194,7 +194,7 @@ h3 {
     color: #ffffff;
 }
 
-h3 .unbold, .text-muted {
+.muted-location {
     font-weight: normal;
     color: #cccccc;
 }
