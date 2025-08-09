@@ -102,6 +102,16 @@ if (contactForm) {
     });
 }
 
+// Image enlargement in CompSciClub
+document.querySelectorAll('#CompSciClub img').forEach(img => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', function() {
+        document.getElementById('modalImage').src = this.src;
+        const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+        modal.show();
+    });
+});
+
 // Scroll to top on page load
 window.addEventListener('load', () => {
     window.scrollTo({ top: 0, behavior: 'instant' });
