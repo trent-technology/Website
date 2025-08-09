@@ -23,7 +23,6 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item"><a href="#Home" class="nav-link tab-link" data-tab="Home"><i class="fas fa-home me-1"></i>Home</a></li>
-                        <li class="nav-item"><a href="#AboutMe" class="nav-link tab-link" data-tab="AboutMe"><i class="fas fa-user me-1"></i>About Me</a></li>
                         <li class="nav-item"><a href="#Resume" class="nav-link tab-link" data-tab="Resume"><i class="fas fa-file-alt me-1"></i>Resume</a></li>
                         <li class="nav-item"><a href="#CompSciClub" class="nav-link tab-link" data-tab="CompSciClub"><i class="fas fa-users me-1"></i>CompSci Club</a></li>
                         <li class="nav-item"><a href="#Contact" class="nav-link tab-link" data-tab="Contact"><i class="fas fa-envelope me-1"></i>Contact</a></li>
@@ -36,14 +35,58 @@
     <main class="container my-4">
         <section id="Home" class="tab-content card p-4">
             <h1>Home</h1>
-            <!-- Blank for now; add content here later -->
-        </section>
-
-        <section id="AboutMe" class="tab-content card p-4">
-            <h1>About Me</h1>
-            <p>
-                I'm Trent, a passionate technologist specializing in networking, cybersecurity, and IT infrastructure. With hands-on experience managing complex systems and leading projects, I solve challenging problems and build innovative solutions. As Vice President of the Computer Science & Engineering Club at Collin College, I mentor peers and organize events to foster tech education. In my free time, I tinker with home lab setups, radio, and PC building.
-            </p>
+            <div id="achievementCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="images/placeholder1.jpg" alt="Placeholder Image 1" class="img-fluid">
+                            </div>
+                            <div class="col-md-6 d-flex align-items-center">
+                                <div>
+                                    <h3>Placeholder Title 1</h3>
+                                    <p>Placeholder description for slide 1.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="images/placeholder2.jpg" alt="Placeholder Image 2" class="img-fluid">
+                            </div>
+                            <div class="col-md-6 d-flex align-items-center">
+                                <div>
+                                    <h3>Placeholder Title 2</h3>
+                                    <p>Placeholder description for slide 2.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="images/placeholder3.jpg" alt="Placeholder Image 3" class="img-fluid">
+                            </div>
+                            <div class="col-md-6 d-flex align-items-center">
+                                <div>
+                                    <h3>Placeholder Title 3</h3>
+                                    <p>Placeholder description for slide 3.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more carousel-items as needed with similar structure -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#achievementCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#achievementCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         </section>
 
         <section id="Resume" class="tab-content card p-4">
