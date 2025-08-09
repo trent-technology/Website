@@ -298,3 +298,17 @@ footer {
         width: 50%; /* Maintain 50% on mobile too */
     }
 }
+
+/* Modal styles for image enlargement */
+.modal-content {
+    background-color: #252525;
+    border: 1px solid #5aa9f8;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+.modal-dialog.modal-xl {
+    max-width: 90%;
+}
