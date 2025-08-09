@@ -11,7 +11,7 @@ function activateTab(tabId) {
 
 // Function to initialize tab
 function initializeTab() {
-    const validTabs = ['Home', 'AboutMe', 'Resume', 'CompSciClub', 'Contact'];
+    const validTabs = ['Home', 'Resume', 'CompSciClub', 'Contact'];
     let tabId = localStorage.getItem('activeTab');
     if (!tabId || !validTabs.includes(tabId)) {
         const hash = window.location.hash.substring(1);
@@ -47,7 +47,7 @@ if (window.location.pathname.endsWith('index.html') || window.location.pathname 
     }
     window.addEventListener('hashchange', () => {
         const hash = window.location.hash.substring(1);
-        const validTabs = ['Home', 'AboutMe', 'Resume', 'CompSciClub', 'Contact'];
+        const validTabs = ['Home', 'Resume', 'CompSciClub', 'Contact'];
         const normalizedHash = validTabs.find(tab => tab.toLowerCase() === hash.toLowerCase());
         const tabId = normalizedHash || 'Home';
         activateTab(tabId);
@@ -77,7 +77,7 @@ if (contactForm) {
         submitButton.disabled = true;
         try {
             const response = await fetch(form.action, {
-                method: form.method,
+                method: form.method;
                 body: new FormData(form),
                 headers: { 'Accept': 'application/json' }
             });
@@ -104,4 +104,28 @@ if (contactForm) {
 // Scroll to top on page load
 window.addEventListener('load', () => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+});
+
+// Modal for CompSci Club images
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("img01");
+    const closeBtn = document.getElementsByClassName("close")[0];
+
+    document.querySelectorAll('#CompSciClub .img-fluid').forEach(img => {
+        img.addEventListener('click', function() {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+        });
+    });
+
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = "none";
+    });
+
+    modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
 });
