@@ -1,4 +1,4 @@
-
+// scripts.js
 // Function to activate a tab based on ID
 function activateTab(tabId) {
     document.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
@@ -12,7 +12,7 @@ function activateTab(tabId) {
 
 // Function to initialize tab
 function initializeTab() {
-    const validTabs = ['Home', 'AboutMe', 'Resume', 'CompSciClub', 'Contact'];
+    const validTabs = ['Home', 'Resume', 'CompSciClub', 'Contact'];
     let tabId = localStorage.getItem('activeTab');
     if (!tabId || !validTabs.includes(tabId)) {
         const hash = window.location.hash.substring(1);
@@ -48,7 +48,7 @@ if (window.location.pathname.endsWith('index.html') || window.location.pathname 
     }
     window.addEventListener('hashchange', () => {
         const hash = window.location.hash.substring(1);
-        const validTabs = ['Home', 'AboutMe', 'Resume', 'CompSciClub', 'Contact'];
+        const validTabs = ['Home', 'Resume', 'CompSciClub', 'Contact'];
         const normalizedHash = validTabs.find(tab => tab.toLowerCase() === hash.toLowerCase());
         const tabId = normalizedHash || 'Home';
         activateTab(tabId);
