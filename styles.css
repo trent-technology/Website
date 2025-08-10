@@ -87,6 +87,7 @@ main {
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    border: none;
 }
 
 .image-container.placeholder {
@@ -219,6 +220,10 @@ li {
 form {
     max-width: 500px;
     margin: 0 auto;
+}
+
+.form-label {
+    color: #ffffff;
 }
 
 .form-control {
