@@ -76,6 +76,7 @@ main {
     grid-template-columns: repeat(3, 1fr); /* 3 events wide */
     gap: 20px;
     padding: 20px;
+    align-items: start;
 }
 
 .image-container {
@@ -132,18 +133,21 @@ main {
 @media (max-width: 1200px) {
     #CompSciClub.active {
         grid-template-columns: repeat(2, 1fr); /* Added for larger tablets/desktops */
+        align-items: start;
     }
 }
 
 @media (max-width: 992px) {
     #CompSciClub.active {
         grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+        align-items: start;
     }
 }
 
 @media (max-width: 768px) {
     #CompSciClub.active {
         grid-template-columns: 1fr; /* 1 column on mobile */
+        align-items: start;
     }
     #CompSciClub img {
         max-width: 100%;
@@ -169,7 +173,7 @@ main {
 
 @media (min-width: 1200px) {
     main {
-        max-width: 80%; /* Reduced from 90% to 80% for larger screens to balance gaps without capping at a fixed px */
+        max-width: 95%; /* Widened for desktops to reduce side gaps */
     }
     #CompSciClub img {
         max-width: 300px; /* Slightly larger images on big screens */
@@ -178,7 +182,8 @@ main {
 
 @media (min-width: 1600px) {
     main {
-        max-width: 70%; /* Further adjustment for ultra-wide desktops to reduce side gaps by making content wider */
+        max-width: 100%; /* Full width for ultra-wide, with internal padding handling edges */
+        padding: 0 2rem; /* Added padding to prevent content from touching screen edges */
     }
 }
 
