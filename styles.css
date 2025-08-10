@@ -221,6 +221,10 @@ form {
     margin: 0 auto;
 }
 
+.form-label {
+    color: #5aa9f8; /* Ensure labels are visible in blue to match theme */
+}
+
 .form-control {
     background-color: #2c2c2c;
     border: 1px solid #5aa9f8;
