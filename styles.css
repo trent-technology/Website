@@ -172,8 +172,11 @@ main {
 }
 
 @media (min-width: 1200px) {
+    body {
+        padding: 10px; /* Reduce body side padding on desktops to bring content closer to edges */
+    }
     main {
-        max-width: 95%; /* Widened for desktops to reduce side gaps */
+        max-width: 98%; /* Widen for desktops to reduce side gaps */
     }
     #CompSciClub img {
         max-width: 300px; /* Slightly larger images on big screens */
@@ -181,9 +184,12 @@ main {
 }
 
 @media (min-width: 1600px) {
+    body {
+        padding: 5px; /* Further reduce for ultra-wide */
+    }
     main {
         max-width: 100%; /* Full width for ultra-wide, with internal padding handling edges */
-        padding: 0 2rem; /* Added padding to prevent content from touching screen edges */
+        padding: 0 1rem;
     }
 }
 
