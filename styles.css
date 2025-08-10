@@ -172,11 +172,8 @@ main {
 }
 
 @media (min-width: 1200px) {
-    body {
-        padding: 10px; /* Reduce body side padding on desktops to bring content closer to edges */
-    }
-    main {
-        max-width: 98%; /* Widen for desktops to reduce side gaps */
+    .container {
+        max-width: 95%; /* Override Bootstrap's container to widen on desktops */
     }
     #CompSciClub img {
         max-width: 300px; /* Slightly larger images on big screens */
@@ -184,12 +181,8 @@ main {
 }
 
 @media (min-width: 1600px) {
-    body {
-        padding: 5px; /* Further reduce for ultra-wide */
-    }
-    main {
-        max-width: 100%; /* Full width for ultra-wide, with internal padding handling edges */
-        padding: 0 1rem;
+    .container {
+        max-width: 100%; /* Full width override for ultra-wide desktops */
     }
 }
 
