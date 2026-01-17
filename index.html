@@ -6,9 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Trent Technology: Portfolio of a networking and cybersecurity professional with CCNA experience, home lab projects, and leadership in tech education.">
     <meta name="keywords" content="networking, cybersecurity, CCNA, IT infrastructure, home lab, Collin College, computer science club, radio, PC building">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com">
-    <title>Trent Technology</title>
+    <meta name="author" content="Trent Technology">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Trent Technology - Networking & Cybersecurity Professional">
+    <meta property="og:description" content="Portfolio of a networking and cybersecurity professional with CCNA experience, home lab projects, and leadership in tech education.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://trent.technology">
+    <meta property="og:image" content="https://trent.technology/images/TrentTechnology Logo.avif">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trent Technology - Networking & Cybersecurity Professional">
+    <meta name="twitter:description" content="Portfolio of a networking and cybersecurity professional with CCNA experience.">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#5aa9f8">
+    
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com;">
+    <title>Trent Technology - Networking & Cybersecurity Professional</title>
     <link rel="icon" href="images/TrentTechnology Logo.jpeg" type="image/jpeg">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://formspree.io">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
@@ -22,26 +42,26 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a href="#Home" class="nav-link tab-link" data-tab="Home"><i class="fas fa-home me-1"></i>Home</a></li>
-                        <li class="nav-item"><a href="#Resume" class="nav-link tab-link" data-tab="Resume"><i class="fas fa-file-alt me-1"></i>Resume</a></li>
-                        <li class="nav-item"><a href="#CompSciClub" class="nav-link tab-link" data-tab="CompSciClub"><i class="fas fa-users me-1"></i>CompSci Club</a></li>
-                        <li class="nav-item"><a href="#Contact" class="nav-link tab-link" data-tab="Contact"><i class="fas fa-envelope me-1"></i>Contact</a></li>
+                    <ul class="navbar-nav" role="menubar">
+                        <li class="nav-item" role="none"><a href="#Home" class="nav-link tab-link" data-tab="Home" role="menuitem" aria-selected="false"><i class="fas fa-home me-1" aria-hidden="true"></i>Home</a></li>
+                        <li class="nav-item" role="none"><a href="#Resume" class="nav-link tab-link" data-tab="Resume" role="menuitem" aria-selected="false"><i class="fas fa-file-alt me-1" aria-hidden="true"></i>Resume</a></li>
+                        <li class="nav-item" role="none"><a href="#CompSciClub" class="nav-link tab-link" data-tab="CompSciClub" role="menuitem" aria-selected="false"><i class="fas fa-users me-1" aria-hidden="true"></i>CompSci Club</a></li>
+                        <li class="nav-item" role="none"><a href="#Contact" class="nav-link tab-link" data-tab="Contact" role="menuitem" aria-selected="false"><i class="fas fa-envelope me-1" aria-hidden="true"></i>Contact</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
 
-    <main class="container my-4">
-        <section id="Home" class="tab-content card p-4">
-            <h1>Project Highlights</h1>
-            <div id="achievementCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-pause="hover">
+    <main class="container my-4" role="main">
+        <section id="Home" class="tab-content card p-4" aria-labelledby="home-heading">
+            <h1 id="home-heading">Project Highlights</h1>
+            <div id="achievementCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-pause="hover" role="region" aria-label="Project highlights carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="images/BTF-MDF-Rack.avif" alt="Placeholder Image 1" class="img-fluid">
+                                <img src="images/BTF-MDF-Rack.avif" alt="Network infrastructure rack showing Ubiquiti switches and cabling" class="img-fluid" loading="lazy">
                             </div>
                             <div class="col-md-6 d-flex align-items-center">
                                 <div>
@@ -55,7 +75,7 @@
                     <div class="carousel-item">
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="images/Datacenter-Selfie.avif" alt="Placeholder Image 2" class="img-fluid">
+                                <img src="images/Datacenter-Selfie.avif" alt="Datacenter facility with server racks and networking equipment" class="img-fluid" loading="lazy">
                             </div>
                             <div class="col-md-6 d-flex align-items-center">
                                 <div>
@@ -69,7 +89,7 @@
                     <div class="carousel-item">
                         <div class="row">
                             <div class="col-md-6">
-                                <img src="images/Cabling Event Rack Pic.avif" alt="Network Infrastructure Cabling" class="img-fluid">
+                                <img src="images/Cabling Event Rack Pic.avif" alt="Professional network cabling in a data center rack environment" class="img-fluid" loading="lazy">
                             </div>
                             <div class="col-md-6 d-flex align-items-center">
                                 <div>
@@ -81,20 +101,20 @@
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#achievementCarousel" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#achievementCarousel" data-bs-slide="prev" aria-label="Previous project">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#achievementCarousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#achievementCarousel" data-bs-slide="next" aria-label="Next project">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
         </section>
 
-        <section id="Resume" class="tab-content card p-4">
+        <section id="Resume" class="tab-content card p-4" aria-labelledby="resume-heading">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h1>Relevant Experience</h1>
+                <h1 id="resume-heading">Relevant Experience</h1>
                 <a href="https://raw.githubusercontent.com/trent-technology/Website/main/resume.pdf" class="btn btn-primary" download>Download PDF</a>
             </div>
             <h3>Beyondthebit MSP - Site Lead <span class="muted-location">| Dallas, Texas</span></h3>
@@ -178,7 +198,7 @@
     
             <h1>Certifications</h1>
             <ul>
-                <li>Cisco Certified Network Associate <span class="muted-location">- Jan 16, 2025</li>
+                <li>Cisco Certified Network Associate <span class="muted-location">- Jan 16, 2025</span></li>
             </ul>
 
             <h1>In-Progress Certifications</h1>
@@ -253,8 +273,8 @@
                 
         </section>
 
-        <section id="CompSciClub" class="tab-content card p-4">
-            <h1>Computer Science & Engineering Club</h1>
+        <section id="CompSciClub" class="tab-content card p-4" aria-labelledby="club-heading">
+            <h1 id="club-heading">Computer Science & Engineering Club</h1>
             <div class="image-container">
                 <div class="image-label">Mentoring at CCNA Bootcamp</div>
                 <img src="images/Trent Mentoring at bootcamp.avif" alt="Trent mentoring a student on network configuration in a lab" class="img-fluid">
@@ -287,8 +307,8 @@
             </div>
         </section>
 
-        <section id="Contact" class="tab-content card p-4">
-            <h1>Contact Me</h1>
+        <section id="Contact" class="tab-content card p-4" aria-labelledby="contact-heading">
+            <h1 id="contact-heading">Contact Me</h1>
             <p>Fill out the form below to get in touch!</p>
             <form id="contact-form" action="https://formspree.io/f/xblovawk" method="POST">
                 <div class="mb-3">

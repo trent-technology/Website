@@ -1,13 +1,51 @@
 // scripts.js
-// Function to activate a tab based on ID
+// Modern ES6+ JavaScript with improved error handling and performance
+
+/**
+ * Activates a tab based on ID with smooth transitions
+ * @param {string} tabId - The ID of the tab to activate
+ */
 function activateTab(tabId) {
-    document.querySelectorAll('.tab-link').forEach(link => link.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-    const targetSection = document.getElementById(tabId);
-    const activeLink = document.querySelector(`.navbar-nav .tab-link[data-tab="${tabId}"]`);
-    if (targetSection) targetSection.classList.add('active');
-    if (activeLink) activeLink.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    try {
+        // Remove active states
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.classList.remove('active');
+            link.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.tab-content').forEach(content => {
+            content.classList.remove('active');
+            content.setAttribute('aria-hidden', 'true');
+        });
+        
+        // Add active states
+        const targetSection = document.getElementById(tabId);
+        const activeLink = document.querySelector(`.navbar-nav .tab-link[data-tab="${tabId}"]`);
+        
+        if (targetSection) {
+            targetSection.classList.add('active');
+            targetSection.setAttribute('aria-hidden', 'false');
+        }
+        
+        if (activeLink) {
+            activeLink.classList.add('active');
+            activeLink.setAttribute('aria-selected', 'true');
+        }
+        
+        // Smooth scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Update page title for better UX
+        const tabNames = {
+            'Home': 'Project Highlights',
+            'Resume': 'Resume & Experience',
+            'CompSciClub': 'Computer Science Club',
+            'Contact': 'Contact Me'
+        };
+        document.title = `${tabNames[tabId] || 'Trent Technology'} - Trent Technology`;
+        
+    } catch (error) {
+        console.error('Error activating tab:', error);
+    }
 }
 
 // Function to initialize tab
@@ -102,17 +140,93 @@ if (contactForm) {
     });
 }
 
-// Image enlargement in CompSciClub
-document.querySelectorAll('#CompSciClub img').forEach(img => {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', function() {
-        document.getElementById('modalImage').src = this.src;
-        const modal = new bootstrap.Modal(document.getElementById('imageModal'));
-        modal.show();
+// Image enlargement in CompSciClub with lazy loading support
+function initializeImageModal() {
+    const images = document.querySelectorAll('#CompSciClub img');
+    const modalImage = document.getElementById('modalImage');
+    const imageModal = document.getElementById('imageModal');
+    
+    if (!modalImage || !imageModal) return;
+    
+    images.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.setAttribute('role', 'button');
+        img.setAttribute('tabindex', '0');
+        img.setAttribute('aria-label', `View larger image: ${img.alt || 'Image'}`);
+        
+        const openModal = () => {
+            modalImage.src = img.src;
+            modalImage.alt = img.alt || 'Enlarged image';
+            const modal = new bootstrap.Modal(imageModal);
+            modal.show();
+        };
+        
+        img.addEventListener('click', openModal);
+        img.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal();
+            }
+        });
     });
+}
+
+// Initialize image modal when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeImageModal);
+} else {
+    initializeImageModal();
+}
+
+// Enhanced scroll behavior and performance
+window.addEventListener('load', () => {
+    // Scroll to top on initial load
+    if (!window.location.hash) {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+    
+    // Initialize intersection observer for animations
+    if ('IntersectionObserver' in window) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe cards and metric items
+        document.querySelectorAll('.card, .metric-item, .skill-category, .competency-item').forEach(el => {
+            observer.observe(el);
+        });
+    }
 });
 
-// Scroll to top on page load
-window.addEventListener('load', () => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
+// Keyboard navigation improvements
+document.addEventListener('keydown', (e) => {
+    // ESC key closes modals
+    if (e.key === 'Escape') {
+        const openModal = document.querySelector('.modal.show');
+        if (openModal) {
+            const modal = bootstrap.Modal.getInstance(openModal);
+            if (modal) modal.hide();
+        }
+    }
+    
+    // Arrow key navigation for carousel (when focused)
+    if (e.target.closest('.carousel')) {
+        if (e.key === 'ArrowLeft') {
+            const prevButton = e.target.closest('.carousel').querySelector('.carousel-control-prev');
+            if (prevButton) prevButton.click();
+        } else if (e.key === 'ArrowRight') {
+            const nextButton = e.target.closest('.carousel').querySelector('.carousel-control-next');
+            if (nextButton) nextButton.click();
+        }
+    }
 });

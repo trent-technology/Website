@@ -1,0 +1,14 @@
+{
+  "name": "trent-technology-website",
+  "version": "1.0.0",
+  "description": "Professional portfolio website for Trent Technology",
+  "scripts": {
+    "generate-resume": "node generate-resume-pdf.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^21.6.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
