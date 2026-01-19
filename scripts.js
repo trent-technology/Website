@@ -31,9 +31,8 @@ function activateTab(tabId) {
             activeLink.setAttribute('aria-selected', 'true');
         }
         
-        // Scroll to top (instant for initial load, smooth for tab switches)
-        const isInitialLoad = !document.querySelector('.tab-content.active');
-        window.scrollTo({ top: 0, behavior: isInitialLoad ? 'instant' : 'smooth' });
+        // Always scroll to top instantly when switching tabs
+        window.scrollTo({ top: 0, behavior: 'instant' });
         
         // Update page title for better UX
         const tabNames = {
@@ -80,6 +79,8 @@ if (window.location.pathname.endsWith('index.html') || window.location.pathname 
     document.querySelectorAll('.tab-link').forEach(link => {
         link.addEventListener('click', e => {
             e.preventDefault();
+            // Scroll to top immediately when clicking a tab
+            window.scrollTo({ top: 0, behavior: 'instant' });
             const tabId = link.getAttribute('data-tab');
             activateTab(tabId);
             window.history.pushState(null, '', `#${tabId}`);
@@ -92,6 +93,8 @@ if (window.location.pathname.endsWith('index.html') || window.location.pathname 
         initializeTab();
     }
     window.addEventListener('hashchange', () => {
+        // Scroll to top immediately when hash changes
+        window.scrollTo({ top: 0, behavior: 'instant' });
         const hash = window.location.hash.substring(1);
         const validTabs = ['Home', 'Resume', 'CompSciClub', 'Services', 'Contact'];
         const normalizedHash = validTabs.find(tab => tab.toLowerCase() === hash.toLowerCase());
@@ -101,6 +104,10 @@ if (window.location.pathname.endsWith('index.html') || window.location.pathname 
         if (window.location.hash !== `#${tabId}`) {
             window.history.replaceState(null, '', `#${tabId}`);
         }
+        // Ensure scroll after tab activation
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }, 50);
     });
 }
 
@@ -184,10 +191,8 @@ if (document.readyState === 'loading') {
 
 // Enhanced scroll behavior and performance
 window.addEventListener('load', () => {
-    // Scroll to top on initial load
-    if (!window.location.hash) {
-        window.scrollTo({ top: 0, behavior: 'instant' });
-    }
+    // Always scroll to top on page load, regardless of hash
+    window.scrollTo({ top: 0, behavior: 'instant' });
     
     // Initialize intersection observer for animations
     if ('IntersectionObserver' in window) {

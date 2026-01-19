@@ -141,6 +141,12 @@ header:hover {
     margin: 0;
 }
 
+/* Allow nav items to shrink if needed */
+.navbar-nav .nav-link {
+    white-space: nowrap;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+}
+
 .navbar-nav .nav-item {
     width: auto;
     margin: 0;
@@ -153,9 +159,10 @@ header:hover {
     white-space: nowrap;
 }
 
-@media (min-width: 992px) {
+/* Show nav tabs when they can fit, hide hamburger */
+@media (min-width: 768px) {
     .navbar-toggler {
-        display: none;
+        display: none !important;
     }
     
     #navbarNav {
@@ -164,6 +171,22 @@ header:hover {
     
     .navbar-nav {
         flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+/* For very small screens, use hamburger */
+@media (max-width: 767px) {
+    .navbar-toggler {
+        display: block;
+    }
+    
+    #navbarNav {
+        display: none;
+    }
+    
+    #navbarNav.show {
+        display: flex !important;
     }
 }
 
@@ -615,8 +638,41 @@ footer {
     border-radius: var(--radius-sm);
 }
 
+/* Navbar Toggler (Hamburger Menu) */
+.navbar-toggler {
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-sm);
+    padding: 6px 10px;
+    background-color: transparent;
+    transition: all var(--transition-base);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(90, 169, 248, 0.25);
+    outline: none;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(90, 169, 248, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 24px;
+    height: 24px;
+}
+
+.navbar-toggler:hover {
+    background-color: rgba(90, 169, 248, 0.1);
+    border-color: var(--color-primary-hover);
+}
+
 /* General responsive design */
 @media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    header {
+        padding: var(--spacing-sm) 10px;
+    }
+    
     .navbar-nav {
         flex-direction: column;
         align-items: flex-start;
@@ -635,7 +691,38 @@ footer {
     .navbar-toggler {
         position: absolute;
         top: var(--spacing-md);
-        right: 0;
+        right: 10px;
+    }
+    
+    main {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+    
+    .card {
+        padding: var(--spacing-md) !important;
+    }
+    
+    h1 {
+        font-size: clamp(1.25rem, 5vw, 1.75rem);
+    }
+    
+    h3 {
+        font-size: clamp(1rem, 4vw, 1.25rem);
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .carousel-control-prev {
+        transform: translateX(calc(-50% - 50px));
+    }
+    
+    .carousel-control-next {
+        transform: translateX(calc(50% + 50px));
     }
 }
 
@@ -1295,6 +1382,7 @@ a, button, input, textarea, select {
     
     .metrics-row {
         flex-direction: column;
+        gap: var(--spacing-sm);
     }
     
     .metric-item {
@@ -1306,7 +1394,7 @@ a, button, input, textarea, select {
     }
     
     .competencies-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
     }
     
     .education-grid {
@@ -1317,11 +1405,34 @@ a, button, input, textarea, select {
         grid-template-columns: 1fr;
     }
     
+    .service-card {
+        margin-bottom: var(--spacing-md);
+    }
+    
     .footer-links {
         flex-direction: column;
+        gap: var(--spacing-sm);
     }
     
     .footer-links .separator {
         display: none;
+    }
+    
+    footer {
+        padding: var(--spacing-md);
+    }
+    
+    /* Improve form on mobile */
+    .form-control {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Better spacing for mobile */
+    .mb-3 {
+        margin-bottom: var(--spacing-md) !important;
+    }
+    
+    .mb-4 {
+        margin-bottom: var(--spacing-lg) !important;
     }
 }
