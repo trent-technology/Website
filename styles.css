@@ -903,29 +903,6 @@ a, button, input, textarea, select {
     border-radius: var(--radius-lg);
     text-align: center;
     border: 1px solid var(--color-border);
-    transition: all var(--transition-base);
-    position: relative;
-    overflow: hidden;
-    box-shadow: var(--shadow-md), var(--shadow-glow);
-}
-
-.metric-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(90, 169, 248, 0.1), transparent);
-    transition: left var(--transition-slow);
-}
-
-.metric-item:hover::before {
-    left: 100%;
-}
-
-.metric-item:hover {
-    transform: translateY(-4px);
     box-shadow: var(--shadow-md), var(--shadow-glow);
 }
 
@@ -959,24 +936,13 @@ a, button, input, textarea, select {
     padding: var(--spacing-lg);
     border-radius: var(--radius-lg);
     border: 1px solid var(--color-border);
-    transition: all var(--transition-base);
     box-shadow: var(--shadow-md), var(--shadow-glow);
-}
-
-.lab-component:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
 .lab-component h4 {
     color: var(--color-primary);
     margin-bottom: var(--spacing-md);
     font-size: 1.1rem;
-    transition: all var(--transition-base);
-}
-
-.lab-component:hover h4 {
-    text-shadow: 0 0 15px rgba(90, 169, 248, 0.5);
 }
 
 .lab-component ul {
@@ -1044,30 +1010,7 @@ a, button, input, textarea, select {
     border: 1px solid var(--color-border);
     display: flex;
     gap: var(--spacing-md);
-    transition: all var(--transition-base);
-    position: relative;
-    overflow: hidden;
     box-shadow: var(--shadow-md), var(--shadow-glow);
-}
-
-.education-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(90, 169, 248, 0.1), transparent);
-    transition: left var(--transition-slow);
-}
-
-.education-item:hover::before {
-    left: 100%;
-}
-
-.education-item:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
 .education-icon {
@@ -1082,12 +1025,6 @@ a, button, input, textarea, select {
     font-size: 1.5rem;
     color: var(--color-bg-primary);
     box-shadow: var(--shadow-md);
-    transition: all var(--transition-base);
-}
-
-.education-item:hover .education-icon {
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
 .education-content {
@@ -1142,30 +1079,7 @@ a, button, input, textarea, select {
     border: 1px solid var(--color-border);
     display: flex;
     gap: var(--spacing-md);
-    transition: all var(--transition-base);
-    position: relative;
-    overflow: hidden;
     box-shadow: var(--shadow-md), var(--shadow-glow);
-}
-
-.cert-item::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(90, 169, 248, 0.1), transparent);
-    transition: left var(--transition-slow);
-}
-
-.cert-item:hover::before {
-    left: 100%;
-}
-
-.cert-item:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg), var(--shadow-glow);
 }
 
 .cert-icon {
@@ -1180,7 +1094,6 @@ a, button, input, textarea, select {
     font-size: 1.5rem;
     color: var(--color-bg-primary);
     box-shadow: var(--shadow-md);
-    transition: all var(--transition-base);
 }
 
 .cert-icon-image {
@@ -1194,15 +1107,6 @@ a, button, input, textarea, select {
     height: 100%;
     object-fit: contain;
     border-radius: var(--radius-sm);
-}
-
-.cert-item:hover .cert-icon {
-    transform: scale(1.1) rotate(-5deg);
-    box-shadow: var(--shadow-lg), var(--shadow-glow);
-}
-
-.cert-item:hover .cert-icon-image {
-    background: linear-gradient(135deg, var(--color-primary-hover) 0%, var(--color-primary-dark) 100%);
 }
 
 .cert-content {
