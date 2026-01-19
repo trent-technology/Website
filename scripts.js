@@ -31,8 +31,9 @@ function activateTab(tabId) {
             activeLink.setAttribute('aria-selected', 'true');
         }
         
-        // Smooth scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Scroll to top (instant for initial load, smooth for tab switches)
+        const isInitialLoad = !document.querySelector('.tab-content.active');
+        window.scrollTo({ top: 0, behavior: isInitialLoad ? 'instant' : 'smooth' });
         
         // Update page title for better UX
         const tabNames = {
@@ -51,6 +52,9 @@ function activateTab(tabId) {
 
 // Function to initialize tab
 function initializeTab() {
+    // Scroll to top immediately on page load
+    window.scrollTo({ top: 0, behavior: 'instant' });
+    
     const validTabs = ['Home', 'Resume', 'CompSciClub', 'Services', 'Contact'];
     let tabId = localStorage.getItem('activeTab');
     if (!tabId || !validTabs.includes(tabId)) {
@@ -66,6 +70,8 @@ function initializeTab() {
     setTimeout(() => {
         const activeSection = document.querySelector('.tab-content.active');
         if (!activeSection || activeSection.id !== tabId) activateTab(tabId);
+        // Ensure we're at the top after tab activation
+        window.scrollTo({ top: 0, behavior: 'instant' });
     }, 100);
 }
 
