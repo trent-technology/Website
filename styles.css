@@ -90,7 +90,7 @@ header:hover {
 }
 
 .header-logo {
-    max-width: 84px;
+    max-width: 63px;
     height: auto;
     border-radius: 15px;
     transition: all var(--transition-base);
@@ -104,6 +104,67 @@ header:hover {
 
 .navbar {
     background-color: transparent;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.navbar-brand-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.navbar-brand-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: var(--spacing-sm);
+}
+
+.navbar-brand {
+    padding: 0;
+    margin: 0;
+}
+
+#navbarNav {
+    width: 100%;
+}
+
+.navbar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-nav .nav-item {
+    width: auto;
+    margin: 0;
+}
+
+.navbar-nav .nav-link {
+    width: auto;
+    text-align: left;
+    padding: var(--spacing-sm) var(--spacing-md) !important;
+    white-space: nowrap;
+}
+
+@media (min-width: 992px) {
+    .navbar-toggler {
+        display: none;
+    }
+    
+    #navbarNav {
+        display: flex !important;
+    }
+    
+    .navbar-nav {
+        flex-direction: row;
+    }
 }
 
 .nav-link.tab-link {
@@ -557,7 +618,24 @@ footer {
 /* General responsive design */
 @media (max-width: 768px) {
     .navbar-nav {
-        text-align: center;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+    
+    .navbar-nav .nav-item {
+        width: 100%;
+    }
+    
+    .navbar-nav .nav-link {
+        width: 100%;
+        padding-left: 0 !important;
+    }
+    
+    .navbar-toggler {
+        position: absolute;
+        top: var(--spacing-md);
+        right: 0;
     }
 }
 
@@ -1148,6 +1226,65 @@ a, button, input, textarea, select {
 .footer-links .separator {
     color: #666;
     margin: 0 5px;
+}
+
+/* Services Section */
+.service-card {
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md), var(--shadow-glow);
+    transition: all var(--transition-base);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: var(--spacing-lg);
+}
+
+.service-card .card-title {
+    color: var(--color-text-primary);
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+}
+
+.service-card .card-text {
+    color: var(--color-text-secondary);
+    flex-grow: 1;
+    margin-bottom: var(--spacing-md);
+}
+
+.service-card .card-text strong {
+    color: var(--color-primary);
+    font-size: 1.1em;
+}
+
+.service-card .btn {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.service-card:hover {
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+    transform: translateY(-4px);
+}
+
+#services-container .alert {
+    background-color: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+}
+
+#services-container .alert-info {
+    border-color: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-bg-tertiary) 0%, rgba(90, 169, 248, 0.1) 100%);
 }
 
 /* Responsive adjustments for new elements */

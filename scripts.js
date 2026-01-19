@@ -39,6 +39,7 @@ function activateTab(tabId) {
             'Home': 'Project Highlights',
             'Resume': 'Resume & Experience',
             'CompSciClub': 'Computer Science Club',
+            'Services': 'Services & Products',
             'Contact': 'Contact Me'
         };
         document.title = `${tabNames[tabId] || 'Trent Technology'} - Trent Technology`;
@@ -50,7 +51,7 @@ function activateTab(tabId) {
 
 // Function to initialize tab
 function initializeTab() {
-    const validTabs = ['Home', 'Resume', 'CompSciClub', 'Contact'];
+    const validTabs = ['Home', 'Resume', 'CompSciClub', 'Services', 'Contact'];
     let tabId = localStorage.getItem('activeTab');
     if (!tabId || !validTabs.includes(tabId)) {
         const hash = window.location.hash.substring(1);
@@ -86,7 +87,7 @@ if (window.location.pathname.endsWith('index.html') || window.location.pathname 
     }
     window.addEventListener('hashchange', () => {
         const hash = window.location.hash.substring(1);
-        const validTabs = ['Home', 'Resume', 'CompSciClub', 'Contact'];
+        const validTabs = ['Home', 'Resume', 'CompSciClub', 'Services', 'Contact'];
         const normalizedHash = validTabs.find(tab => tab.toLowerCase() === hash.toLowerCase());
         const tabId = normalizedHash || 'Home';
         activateTab(tabId);
@@ -121,12 +122,9 @@ if (contactForm) {
                 headers: { 'Accept': 'application/json' }
             });
             if (response.ok) {
-                statusMessage.textContent = 'Thank you! Your message has been sent. Redirecting...';
+                statusMessage.textContent = 'Thank you! Your message has been sent successfully. I\'ll get back to you soon!';
                 statusMessage.style.color = '#4a90e2';
                 form.reset();
-                setTimeout(() => {
-                    window.location.href = '/thank-you.html';
-                }, 2000);
             } else {
                 throw new Error('Form submission failed');
             }
