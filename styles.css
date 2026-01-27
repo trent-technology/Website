@@ -453,6 +453,10 @@ h3::before {
     border-radius: var(--radius-sm);
 }
 
+h3.no-bar::before {
+    display: none;
+}
+
 h4 {
     font-size: clamp(1rem, 2.5vw, 1.125rem);
     font-weight: 600;
