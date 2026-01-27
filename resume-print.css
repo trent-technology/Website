@@ -146,6 +146,8 @@ strong {
     text-align: center;
     border: 1pt solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
 }
 
 .metric-value {
@@ -153,10 +155,10 @@ strong {
     font-weight: 700;
     color: #5aa9f8;
     margin-bottom: 3pt;
-    background: linear-gradient(135deg, #5aa9f8 0%, #4a90e2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    position: relative;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .metric-label {
