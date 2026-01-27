@@ -1,7 +1,16 @@
 /* resume-print.css - Print-optimized styles for resume */
 @page {
     margin: 0.4in;
-    size: letter;
+    size: letter portrait;
+}
+
+/* Safari print color fix - must be at top level */
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
 }
 
 * {
@@ -17,18 +26,20 @@ body {
     color: #1a1a1a;
     background: white;
     padding: 0;
+    /* Prevent right-side clipping */
+    padding-right: 2pt;
+    box-sizing: border-box;
 }
 
 .resume-header {
     text-align: center;
-    margin-bottom: 10pt;
-    padding-bottom: 8pt;
-    border-bottom: 2pt solid #5aa9f8;
-}
-
-.resume-header img {
-    max-width: 45px;
     margin-bottom: 6pt;
+    padding-bottom: 6pt;
+    border-bottom: 2pt solid #5aa9f8;
+    /* Safari print fix */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
 }
 
 .resume-header h2 {
@@ -49,6 +60,9 @@ body {
     border: none;
     box-shadow: none;
     padding: 0;
+    /* Prevent right-side clipping */
+    padding-right: 2pt;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -61,8 +75,13 @@ h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    /* Fallback for print - Safari doesn't support background-clip well */
     border-bottom: 0.5pt solid #ccc;
     padding-bottom: 3pt;
+    /* Safari print fix */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
 }
 
 h1:first-child {
@@ -88,6 +107,14 @@ h3::before {
     width: 3pt;
     background: #5aa9f8;
     border-radius: 1pt;
+    /* Safari print fix */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+}
+
+h3.no-bar::before {
+    display: none;
 }
 
 h4 {
@@ -135,11 +162,15 @@ strong {
     margin-bottom: 6pt;
     margin-top: 4pt;
     flex-wrap: wrap;
+    /* Prevent right-side clipping */
+    margin-right: -1pt;
+    padding-right: 1pt;
 }
 
 .metric-item {
     flex: 1;
     min-width: 70pt;
+    background: #f5f5f5;
     background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
     padding: 8pt;
     border-radius: 5pt;
@@ -148,6 +179,10 @@ strong {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
+    /* Safari print fix */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
 }
 
 .metric-value {
@@ -173,10 +208,14 @@ strong {
     gap: 8pt;
     margin-bottom: 8pt;
     margin-top: 5pt;
+    /* Prevent right-side clipping - reduce gap slightly and add margin */
+    margin-right: -1pt;
+    padding-right: 1pt;
 }
 
 .education-item,
 .cert-item {
+    background: #fafafa;
     background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
     padding: 8pt;
     border-radius: 5pt;
@@ -185,6 +224,10 @@ strong {
     gap: 8pt;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     page-break-inside: avoid;
+    /* Safari print fix */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
 }
 
 .education-icon,
@@ -192,6 +235,7 @@ strong {
     flex-shrink: 0;
     width: 32pt;
     height: 32pt;
+    background: #5aa9f8;
     background: linear-gradient(135deg, #5aa9f8 0%, #4a90e2 100%);
     border-radius: 4pt;
     display: flex;
@@ -200,6 +244,10 @@ strong {
     font-size: 14pt;
     color: #000000;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    /* Safari print fix */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
 }
 
 .cert-icon-image {
@@ -211,6 +259,11 @@ strong {
     height: 100%;
     object-fit: contain;
     border-radius: 2pt;
+    display: block;
+    /* Safari print fix */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
 }
 
 .education-content,
@@ -257,15 +310,23 @@ strong {
     gap: 8pt;
     margin-bottom: 8pt;
     margin-top: 5pt;
+    /* Prevent right-side clipping - reduce gap slightly and add margin */
+    margin-right: -1pt;
+    padding-right: 1pt;
 }
 
 .lab-component {
+    background: #fafafa;
     background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%);
     padding: 8pt;
     border-radius: 5pt;
     border: 1pt solid #ddd;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     page-break-inside: avoid;
+    /* Safari print fix */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
 }
 
 .lab-component h4 {
@@ -308,18 +369,136 @@ strong {
 }
 
 @media print {
+    /* Reset body for print */
     body {
-        padding: 0;
+        padding: 0 2pt 0 0;
+        margin: 0;
+        background: white;
+        color: #1a1a1a;
+        box-sizing: border-box;
     }
+    
+    /* Prevent right-side clipping in print */
+    .card {
+        padding-right: 2pt !important;
+        box-sizing: border-box !important;
+    }
+    
+    .education-grid,
+    .certifications-grid,
+    .lab-architecture,
+    .metrics-row {
+        margin-right: -1pt !important;
+        padding-right: 1pt !important;
+    }
+    
+    /* Global Safari print color fix */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    
+    /* Ensure all backgrounds print in Safari */
+    .metric-item,
+    .education-item,
+    .cert-item,
+    .lab-component,
+    .education-icon,
+    .cert-icon {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        background-color: #f5f5f5 !important;
+    }
+    
+    /* Ensure borders print */
+    .metric-item,
+    .education-item,
+    .cert-item,
+    .lab-component {
+        border: 1pt solid #ddd !important;
+    }
+    
+    /* Ensure colored elements print */
+    .resume-header {
+        border-bottom: 2pt solid #5aa9f8 !important;
+    }
+    
+    h3::before {
+        background: #5aa9f8 !important;
+    }
+    
+    h3.no-bar::before {
+        display: none !important;
+    }
+    
+    .metric-value,
+    .education-institution,
+    .cert-issuer,
+    .lab-component h4 {
+        color: #5aa9f8 !important;
+    }
+    
+    /* Ensure h1 color prints (fallback if gradient doesn't) - Safari fix */
+    h1 {
+        color: #5aa9f8 !important;
+        -webkit-text-fill-color: #5aa9f8 !important;
+        background: none !important;
+        -webkit-background-clip: unset !important;
+        background-clip: unset !important;
+    }
+    
+    /* Safari-specific: Force solid color for h1 in print */
+    @supports (-webkit-appearance: none) {
+        @media print {
+            h1 {
+                color: #5aa9f8 !important;
+                background: none !important;
+                -webkit-text-fill-color: #5aa9f8 !important;
+            }
+        }
+    }
+    
+    /* Ensure images print */
+    img {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    /* Page break controls */
     .education-item,
     .cert-item,
     .lab-component {
         page-break-inside: avoid;
+        break-inside: avoid;
+        -webkit-break-inside: avoid;
     }
+    
     h1 {
         page-break-after: avoid;
+        page-break-inside: avoid;
     }
+    
     h3 {
         page-break-after: avoid;
+    }
+    
+    .resume-header {
+        page-break-after: avoid;
+    }
+    
+    /* Remove shadows for cleaner print */
+    .metric-item,
+    .education-item,
+    .cert-item,
+    .lab-component,
+    .education-icon,
+    .cert-icon {
+        box-shadow: none !important;
     }
 }
