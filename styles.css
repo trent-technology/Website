@@ -52,6 +52,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Safari-specific rendering fixes */
+@supports (-webkit-appearance: none) {
+    .metric-item,
+    .education-item,
+    .cert-item,
+    .lab-component,
+    .card,
+    .image-container,
+    .service-card {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 }
 
 /* Smooth scrolling */
@@ -240,9 +255,17 @@ main {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md), var(--shadow-glow);
+    -webkit-box-shadow: var(--shadow-md), var(--shadow-glow);
     transition: all var(--transition-base);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+    overflow: hidden;
 }
 
 .card:hover {
@@ -292,9 +315,16 @@ main {
     padding: var(--spacing-md);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md), var(--shadow-glow);
+    -webkit-box-shadow: var(--shadow-md), var(--shadow-glow);
     border: 1px solid var(--color-border);
     transition: all var(--transition-base);
     overflow: hidden;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
 }
 
 .image-container:hover {
@@ -1069,6 +1099,14 @@ a, button, input, textarea, select {
     text-align: center;
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-md), var(--shadow-glow);
+    -webkit-box-shadow: var(--shadow-md), var(--shadow-glow);
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+    overflow: hidden;
 }
 
 .metric-value {
@@ -1102,6 +1140,14 @@ a, button, input, textarea, select {
     border-radius: var(--radius-lg);
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-md), var(--shadow-glow);
+    -webkit-box-shadow: var(--shadow-md), var(--shadow-glow);
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+    overflow: hidden;
 }
 
 .lab-component h4 {
@@ -1176,6 +1222,14 @@ a, button, input, textarea, select {
     display: flex;
     gap: var(--spacing-md);
     box-shadow: var(--shadow-md), var(--shadow-glow);
+    -webkit-box-shadow: var(--shadow-md), var(--shadow-glow);
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+    overflow: hidden;
 }
 
 .education-icon {
@@ -1190,6 +1244,11 @@ a, button, input, textarea, select {
     font-size: 1.5rem;
     color: var(--color-bg-primary);
     box-shadow: var(--shadow-md);
+    -webkit-box-shadow: var(--shadow-md);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .education-content {
@@ -1259,6 +1318,11 @@ a, button, input, textarea, select {
     font-size: 1.5rem;
     color: var(--color-bg-primary);
     box-shadow: var(--shadow-md);
+    -webkit-box-shadow: var(--shadow-md);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .cert-icon-image {
@@ -1321,10 +1385,18 @@ a, button, input, textarea, select {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md), var(--shadow-glow);
+    -webkit-box-shadow: var(--shadow-md), var(--shadow-glow);
     transition: all var(--transition-base);
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+    overflow: hidden;
 }
 
 .service-card .card-body {
