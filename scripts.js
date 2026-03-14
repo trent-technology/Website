@@ -2,6 +2,45 @@
 // Modern ES6+ JavaScript with improved error handling and performance
 
 /**
+ * Theme: dark/light mode with localStorage and system preference
+ */
+const THEME_KEY = 'theme';
+
+function getPreferredTheme() {
+    const stored = localStorage.getItem(THEME_KEY);
+    if (stored === 'light' || stored === 'dark') return stored;
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
+    return 'dark';
+}
+
+function setTheme(theme) {
+    const root = document.documentElement;
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem(THEME_KEY, theme);
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (metaTheme) metaTheme.setAttribute('content', theme === 'dark' ? '#1a1a1a' : '#5aa9f8');
+}
+
+function initTheme() {
+    setTheme(getPreferredTheme());
+    const btn = document.querySelector('.theme-toggle');
+    if (btn) {
+        btn.setAttribute('aria-label', document.documentElement.getAttribute('data-theme') === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        btn.addEventListener('click', () => {
+            const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            setTheme(next);
+            btn.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+        });
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTheme);
+} else {
+    initTheme();
+}
+
+/**
  * Activates a tab based on ID with smooth transitions
  * @param {string} tabId - The ID of the tab to activate
  */

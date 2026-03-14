@@ -45,6 +45,23 @@
     --radius-xl: 16px;
 }
 
+/* Light theme */
+[data-theme="light"] {
+    --color-bg-primary: #c5c5c5;
+    --color-bg-secondary: #cecece;
+    --color-bg-tertiary: #bdbdbd;
+    --color-bg-card: #cecece;
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #3a3a3a;
+    --color-text-muted: #555555;
+    --color-border: #b0b0b0;
+    --color-border-light: #b8b8b8;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 20px rgba(90, 169, 248, 0.15);
+}
+
 /* Reset default styles */
 *,
 *::before,
@@ -130,6 +147,9 @@ header:hover {
 
 #navbarNav {
     width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .navbar-nav {
@@ -228,6 +248,39 @@ header:hover {
     border-radius: var(--radius-sm);
 }
 
+/* Theme toggle button */
+.theme-toggle {
+    margin-left: auto;
+    padding: var(--spacing-sm) var(--spacing-md) !important;
+    color: var(--color-text-primary) !important;
+    text-decoration: none !important;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+.theme-toggle:hover {
+    color: var(--color-primary) !important;
+    background-color: rgba(90, 169, 248, 0.1);
+}
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+.theme-toggle .theme-icon-light {
+    display: none;
+}
+.theme-toggle .theme-icon-dark {
+    display: inline-block;
+}
+[data-theme="light"] .theme-toggle .theme-icon-light {
+    display: inline-block;
+}
+[data-theme="light"] .theme-toggle .theme-icon-dark {
+    display: none;
+}
+
 /* Main content */
 main {
     max-width: 90%; /* Base for smaller screens */
@@ -319,21 +372,21 @@ main {
     font-size: 1.2em;
     font-weight: bold;
     padding: 10px;
-    background-color: #2c2c2c;
+    background-color: var(--color-bg-tertiary);
     border: none;
     border-radius: 4px;
-    color: #ffffff;
+    color: var(--color-text-primary);
     text-align: center;
 }
 
 .description {
     font-size: 1em;
     padding: 15px;
-    background-color: #2c2c2c;
+    background-color: var(--color-bg-tertiary);
     border: none;
     border-radius: 4px;
     min-height: 100px;
-    color: #ffffff;
+    color: var(--color-text-primary);
 }
 
 #CompSciClub img {
@@ -761,6 +814,13 @@ footer {
     padding: var(--spacing-sm);
 }
 
+.carousel-image-caption {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary, #666);
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+
 .carousel-item h3 {
     color: var(--color-primary);
     margin-bottom: var(--spacing-md);
@@ -1088,7 +1148,7 @@ a, button, input, textarea, select {
 
 .metric-label {
     font-size: 0.9rem;
-    color: #cccccc;
+    color: var(--color-text-secondary);
 }
 
 /* Lab Architecture Styles */
