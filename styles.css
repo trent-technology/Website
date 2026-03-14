@@ -71,12 +71,13 @@
     box-sizing: border-box;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling; height for sticky footer */
 html {
     scroll-behavior: smooth;
+    height: 100%;
 }
 
-/* Body styles for dark theme with improved contrast */
+/* Body: flex column so footer at bottom when content short; no white space after footer when long */
 body {
     font-family: var(--font-family-base);
     background-color: var(--color-bg-primary);
@@ -86,6 +87,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Header */
@@ -282,10 +286,18 @@ header:hover {
 }
 
 /* Main content */
+/* Header full size; content scaled 15% with transform; negative margin pulls footer up so no gap */
+/* flex: 1 0 auto so main grows when content is short and footer stays at bottom of viewport */
 main {
-    max-width: 90%; /* Base for smaller screens */
+    max-width: 90%;
     margin: 2rem auto;
     padding: 0 1rem;
+    flex: 1 0 auto;
+}
+
+.main-scaled-wrapper {
+    transform: scale(0.85);
+    transform-origin: top center;
 }
 
 .card {

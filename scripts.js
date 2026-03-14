@@ -83,9 +83,21 @@ function activateTab(tabId) {
         };
         document.title = `${tabNames[tabId] || 'Trent Technology'} - Trent Technology`;
         
+        updateMainScaledHeight();
     } catch (error) {
         console.error('Error activating tab:', error);
     }
+}
+
+/** Pull footer up by 15% of content height so it sits under the scaled content with no gap */
+function updateMainScaledHeight() {
+    const wrapper = document.querySelector('.main-scaled-wrapper');
+    if (!wrapper) return;
+    wrapper.style.marginBottom = '';
+    requestAnimationFrame(() => {
+        const contentHeight = wrapper.scrollHeight;
+        wrapper.style.marginBottom = -(contentHeight * 0.15) + 'px';
+    });
 }
 
 // Function to initialize tab
@@ -108,9 +120,10 @@ function initializeTab() {
     setTimeout(() => {
         const activeSection = document.querySelector('.tab-content.active');
         if (!activeSection || activeSection.id !== tabId) activateTab(tabId);
-        // Ensure we're at the top after tab activation
         window.scrollTo({ top: 0, behavior: 'instant' });
+        updateMainScaledHeight();
     }, 100);
+    updateMainScaledHeight();
 }
 
 // Tab switching logic
